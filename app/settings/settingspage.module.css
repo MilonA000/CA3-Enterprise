@@ -1,0 +1,381 @@
+.AccountInfoCard {
+    position: fixed;
+    left: 60px;
+    top: 369.67px;
+
+    background: linear-gradient(135deg, rgba(10, 92, 126, 0.9), rgba(33, 164, 207, 0.82));
+    border-radius: 15px;
+    border: 1px solid rgba(165, 95, 115, 0.7);
+
+    padding: 26px;
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 84% 100%, 0 100%);
+}
+
+.AccountInfoContent {
+    width: 267px;
+    height: auto;
+}
+
+.AccountInfoContent h2 {
+    margin: 0 0 10px;
+    font-size: 2rem;
+    line-height: 1;
+
+    font-weight: bold;
+    color: white;
+    padding-bottom: 3px;
+}
+
+.AccountInfoContent p {
+    margin: 0 0 28px;
+    font-size: 1rem;
+    color: white;
+}
+
+.secondaryButton {
+    color: white;
+    margin-top: 15px;
+    margin-left: 12.5%;
+    width: 200px;
+
+    font-size: 18px;
+    border: 1px solid rgb(72, 72, 72);
+    background: linear-gradient(135deg, rgba(7, 57, 79, 0.92), rgba(58, 161, 196, 0.92));
+    padding: 10px;
+
+    border-radius: 7.6px;
+    cursor: pointer;
+    box-shadow: inset 0 2px 4px rgba(40, 8, 22, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 4px 12px rgba(70, 20, 40, 0.2);
+
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 85% 100%, 0 100%);
+}
+
+.secondaryButton:hover {
+    background: linear-gradient(135deg, rgba(7, 57, 79, 0.72) 0%, rgba(58, 161, 196, 0.92) 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), inset 0 -1px 0 rgba(70, 20, 40, 0.16), 0 10px 24px rgba(70, 20, 40, 0.28);
+    transform: translateY(-1px);
+
+    filter: saturate(1.03);
+}
+
+.secondaryButton:active {
+    transform: translateY(1px);
+    box-shadow: inset 0 2px 4px rgba(40, 8, 22, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 4px 12px rgba(70, 20, 40, 0.18);
+}
+
+.contentLayer {
+    position: fixed;
+    left: 453.69px;
+    top: 90px;
+
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.93), rgba(238, 247, 250, 0.88));
+    border-bottom: 2px solid rgba(188, 105, 132, 0.55);
+    border-left: 2px solid rgba(188, 105, 132, 0.55);
+
+    border-top: 2px solid rgba(120, 200, 230, 0.4);
+    border-right: 2px solid rgba(120, 200, 230, 0.4);
+    padding: 28px;
+
+    clip-path: polygon(0 0, 100% 0, 100% 84%, 84% 100%, 0 100%);
+}
+
+.settingsHero {
+    width:700px;
+    height: 306.7px;
+}
+
+.settingsHeroContent h1 {
+    margin: 0 0 10px;
+    font-size: 2.4rem;
+    line-height: 1.1;
+
+    font-weight: bold;
+    color: rgb(17, 42, 58);
+    padding-bottom: 3px;
+}
+
+.settingsHeroContent p {
+    margin: 0 0 40px;
+    font-size: 1rem;
+    color: rgb(17, 42, 58);
+}
+
+.settingsGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+}
+
+.settingsHeading {
+    font-size: 2rem;
+    font-weight: bold;
+    color: rgb(17, 42, 58);
+
+    padding-bottom: 10px;
+    margin-top: -165.69px;
+}
+
+.settingsCard h3{
+    font-size: 1.5rem;
+    color: rgb(17, 42, 58);
+    margin-top: 6px;
+
+    font-weight: bold;
+    text-decoration: underline;
+    padding-bottom: 4px;
+}
+
+.toggleRow {
+    font-size: 19px;
+    margin-left: 20.67px;
+    color: rgb(17, 42, 58);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    cursor: pointer;
+}
+
+
+.toggleRow input {
+    margin-left: 6.7px;
+    font-size: 20px;
+}
+
+.toggleRow input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    margin: 0;
+
+    cursor: pointer;
+    accent-color: rgb(10, 92, 126);
+    transform: translateY(1px);
+}
+
+.toggleRow input[type="checkbox"]:focus-visible {
+  outline: 3px solid rgba(33, 164, 207, 0.35);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.selectGroup {
+    display: flex;
+    font-size: 19px;
+    color: rgb(17, 42, 58);
+}
+
+.selectInput {
+    min-width: 200px;
+    height: 32px;
+    padding: 0 48px 0 16px;
+
+    margin-left: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+
+    background: linear-gradient(135deg, rgba(165, 95, 115, 0.92), rgba(205, 170, 180, 0.82));
+    color: white;
+    font-size: 1.1rem;
+
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.14),
+        0 8px 20px rgba(70, 20, 40, 0.12);
+    transition:
+        transform 0.16s ease,
+        box-shadow 0.16s ease,
+        border-color 0.16s ease,
+        background 0.16s ease;
+
+    background-image: linear-gradient(135deg, rgba(165, 95, 115, 0.92), rgba(205, 170, 180, 0.82));
+    background-repeat: no-repeat, no-repeat;
+    background-position: center, right 16px center;
+    
+    background-size: cover, 14px;
+}
+
+.selectInput:hover {
+    transform: translateY(-1px);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.18),
+        0 10px 24px rgba(70, 20, 40, 0.18);
+}
+
+.selectInput:focus {
+    outline: none;
+    border-color: rgba(33, 164, 207, 0.9);
+    box-shadow:
+        0 0 0 3px rgba(33, 164, 207, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.16),
+        0 10px 24px rgba(70, 20, 40, 0.18);
+}
+
+.selectInput option {
+    color: #1e2a30;
+    background: #f8fbfc;
+}
+
+
+.saveButton {
+    color: white;
+    margin-top: 27px;
+    margin-left: 50px;
+
+    font-size: 25px;
+    border: none;
+    background: linear-gradient(90deg, rgba(112, 48, 70, 0.98) 0%, rgba(160, 80, 108, 0.98) 50%, rgba(200, 110, 140, 0.98) 100%);
+    padding: 15px;
+
+    border-radius: 7.6px;
+    cursor: pointer;
+    box-shadow:
+        inset 0 2px 4px rgba(40, 8, 22, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        0 4px 12px rgba(70, 20, 40, 0.2);
+
+    width: 267px;
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 85% 100%, 0 100%);
+}
+
+.saveButton:hover {
+    background: linear-gradient(90deg, rgba(132, 64, 90, 0.98) 0%, rgba(164, 82, 114, 0.98) 45%, rgba(197, 110, 141, 0.98) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.22),
+        inset 0 -1px 0 rgba(70, 20, 40, 0.16),
+        0 10px 24px rgba(70, 20, 40, 0.28);
+    transform: translateY(-1px);
+
+    filter: saturate(1.03);
+}
+
+.saveButton:active {
+    transform: translateY(1px);
+    box-shadow:
+        inset 0 2px 4px rgba(40, 8, 22, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        0 4px 12px rgba(70, 20, 40, 0.18);
+}
+
+.restoreButton {
+    color: white;
+    margin-top: 15px;
+    margin-left: 67px;
+    width: 200px;
+
+    font-size: 18px;
+    border: 1px solid rgb(72, 72, 72);
+    background: linear-gradient(135deg, rgba(7, 57, 79, 0.92), rgba(58, 161, 196, 0.92));
+    padding: 10px;
+
+    border-radius: 7.6px;
+    cursor: pointer;
+    box-shadow:
+        inset 0 2px 4px rgba(40, 8, 22, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        0 4px 12px rgba(70, 20, 40, 0.2);
+
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 85% 100%, 0 100%);
+}
+
+.restoreButton:hover {
+    background: linear-gradient(135deg, rgba(7, 57, 79, 0.72) 0%, rgba(58, 161, 196, 0.92) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.22),
+        inset 0 -1px 0 rgba(70, 20, 40, 0.16),
+        0 10px 24px rgba(70, 20, 40, 0.28);
+    transform: translateY(-1px);
+
+    filter: saturate(1.03);
+}
+
+.restoreButton:active {
+    transform: translateY(1px);
+    box-shadow:
+        inset 0 2px 4px rgba(40, 8, 22, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        0 4px 12px rgba(70, 20, 40, 0.18);
+}
+
+.summaryCard {
+    position: fixed;
+    top: 136.9px;
+    right: 46.7px;
+
+    background: linear-gradient(90deg, rgba(133, 58, 84, 0.78), rgba(160, 80, 108, 0.78), rgba(200, 110, 140, 0.78));
+    border-radius: 15px;
+    border: 1px solid rgba(165, 95, 115, 0.7);
+
+    padding: 26px;
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 84% 100%, 0 100%);
+    height: auto;
+
+    backdrop-filter: blur(6px);
+}
+
+.summaryCardContent {
+    width: 267px;
+    height: auto;
+}
+
+.summaryTitle {
+    font-size: 1.5rem;
+    color: white;
+    margin: 0 0;
+
+    font-weight: bold;
+    text-decoration: underline;
+    padding-bottom: 4px; 
+}
+
+.summaryCard p {
+    margin-top: 25px;
+    color: white;
+    font-size: 15px;
+    line-height: 1.2;
+}
+
+.quickLinks {
+    display: flex;
+    flex-direction: row;
+    gap: 12.67px;
+
+    margin-left: -10px;
+    margin-top: 21.21px;
+    text-decoration: underline;
+
+    font-size: 12px;
+    color: rgba(2, 17, 21, 0.5);
+}
+
+.quickLinks button:hover {
+    cursor: pointer; 
+    box-shadow: none;
+    transform: translateY(-1px);
+
+    filter: saturate(1.03);
+    background: transparent;
+}
+
+.quickLinks button:active {
+    transform: translateY(1px);
+}
+
+.statusMessage {
+    margin: 0 0 16px;
+    padding: 12px 14px;
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, 0.14);
+    color: rgb(17, 42, 58);
+    font-weight: 600;
+}

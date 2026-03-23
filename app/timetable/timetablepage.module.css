@@ -1,0 +1,473 @@
+.timetablePageLayout {
+    position: relative;
+    min-height: 100vh;
+}
+
+.timetableContentColumn {
+    width: min(1080px, calc(100vw - 420px));
+    margin-left: 220px;
+    margin-right: 320px;
+
+    padding-top: 360px;
+    padding-bottom: 80px;
+}
+
+.timetableHero {
+    position: relative;
+    margin-left: 210px;
+    margin-top: 110px;
+
+    width: 900px;
+    z-index: 3;
+}
+
+.eyebrow {
+    margin: 0 0 10px 4px;
+    color: rgba(10, 92, 126, 0.92);
+    font-size: 18px;
+
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+
+    font-family: "Poppins", "Montserrat", sans-serif;
+}
+
+.timetableHeroContent h1 {
+    margin: 0;
+    max-width: 700px;
+    color: rgb(17, 42, 58);
+
+    font-family: "Poppins", "Montserrat", sans-serif;
+    font-size: 4rem;
+    font-weight: 800;
+
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+}
+
+.timetableHeroContent p {
+    margin-top: 18px;
+    max-width: 760px;
+    color: rgba(34, 58, 70, 0.86);
+
+    font-size: 1.1rem;
+    line-height: 1.7;
+    font-weight: 500;
+}
+
+.timetableSummaryCard {
+    position: fixed;
+    top: 484px;
+    right: 30px;
+
+    width: 260px;
+    min-height: 220px;
+    padding: 18px;
+
+    background: linear-gradient(135deg, rgba(165, 95, 115, 0.92), rgba(205, 170, 180, 0.82));
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 14% 100%, 0 76%);
+    z-index: 10;
+
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.timetableSummaryContent {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    color: white;
+}
+
+.timetableSummaryContent h2 {
+    margin: 0;
+    font-family: "Poppins", "Montserrat", sans-serif;
+    font-size: 1.6rem;
+    
+    font-weight: bold;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.summaryStat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    
+    border-radius: 8px;
+    margin-left: 10px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 8% 100%, 0 70%);
+}
+
+.summaryLabel {
+    font-size: 0.82rem;
+    font-weight: 700;
+    opacity: 0.9;
+    
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.summaryValue {
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.timetablePanel {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    width: 100%;
+    padding: 24px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.93), rgba(238, 247, 250, 0.88));
+
+    border-bottom: 2px solid rgba(188, 105, 132, 0.55);
+    border-left: 2px solid rgba(188, 105, 132, 0.55);
+    border-top: 2px solid rgba(120, 200, 230, 0.4);
+
+    border-right: 2px solid rgba(120, 200, 230, 0.4);
+    border-radius: 10px;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 96% 100%, 0 100%);
+
+    overflow: hidden;
+    margin-top: -300px;
+}
+
+.timetableHeading {
+    margin: 0;
+    font-size: 32px;
+    font-weight: bold;
+
+    color: rgb(17, 42, 58);
+    font-family: "Poppins", "Montserrat", sans-serif;
+}
+
+.timetableSubheading {
+    margin: 0;
+    color: rgb(17, 42, 58);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.dayTabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.dayButton {
+    min-height: 54px;
+    padding: 0 18px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+
+    background: linear-gradient(90deg, rgba(112, 48, 70, 0.98) 0%, rgba(160, 80, 108, 0.98) 50%, rgba(200, 110, 140, 0.98) 100%);
+    color: rgba(255, 255, 255, 0.98);
+    font-size: 15px;
+
+    font-weight: 700;
+    line-height: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 82%, 92% 100%, 0 100%);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.18),
+        inset 0 -1px 0 rgba(70, 20, 40, 0.18),
+        0 8px 20px rgba(70, 20, 40, 0.22);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.18);
+    
+    transition:
+        transform 0.16s ease,
+        filter 0.16s ease,
+        box-shadow 0.16s ease,
+        background 0.16s ease,
+        opacity 0.16s ease;
+}
+
+.dayButton:hover {
+    background: linear-gradient(90deg, rgba(132, 64, 90, 0.98) 0%, rgba(164, 82, 114, 0.98) 45%, rgba(197, 110, 141, 0.98) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.22),
+        inset 0 -1px 0 rgba(70, 20, 40, 0.16),
+        0 10px 24px rgba(70, 20, 40, 0.28);
+
+    transform: translateY(-1px);
+    filter: saturate(1.03);
+}
+
+.dayButton:active {
+    transform: translateY(1px);
+    box-shadow:
+        inset 0 2px 4px rgba(40, 8, 22, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        0 4px 12px rgba(70, 20, 40, 0.18);
+}
+
+.dayButton:focus-visible {
+    outline: 3px solid rgba(255, 255, 255, 0.96);
+    outline-offset: 3px;
+}
+
+.activeDayButton {
+    background: linear-gradient(90deg, rgba(10, 92, 126, 0.98) 0%, rgba(28, 126, 160, 0.98) 55%, rgba(40, 170, 215, 0.98) 100%);
+}
+
+.tableCard {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, rgba(10, 92, 126, 0.9), rgba(33, 164, 207, 0.82));
+    
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 4% 100%, 0 87%);
+    overflow: hidden;
+}
+
+.tableWrapper {
+    overflow-x: auto;
+    border-radius: 8px;
+}
+
+.table {
+    width: 100%;
+    min-width: 760px;
+    border-collapse: collapse;
+
+    background: rgba(255, 255, 255, 0.96);
+    color: #17333d;
+    border-radius: 8px;
+    
+    overflow: hidden;
+}
+
+.table thead {
+    background: linear-gradient(180deg, rgba(226, 244, 248, 1), rgba(205, 233, 241, 1));
+}
+
+.table th,
+.table td {
+    text-align: left;
+    padding: 16px 14px;
+    border-bottom: 1px solid rgba(106, 149, 164, 0.18);
+    vertical-align: top;
+}
+
+.table th {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #18485a;
+}
+
+.table tbody tr:nth-child(even) {
+    background: rgba(241, 248, 250, 0.9);
+}
+
+.table tbody tr:hover {
+    background: rgba(230, 242, 246, 0.95);
+}
+
+.moduleName {
+    margin: 0 0 4px;
+    font-size: 1rem;
+    font-weight: 800;
+    color: #183845;
+}
+
+.moduleCode {
+    color: #6c7f86;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.timeCell {
+    font-weight: 700;
+    color: #18485a;
+    white-space: nowrap;
+}
+
+.modeBadge,
+.weekBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 82px;
+    padding: 8px 10px;
+    border-radius: 999px;
+
+    font-size: 0.82rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.modeBadge {
+    background: rgba(10, 92, 126, 0.1);
+    color: #0d667f;
+}
+
+.weekBadge {
+    background: rgba(188, 105, 132, 0.12);
+    color: #924760;
+}
+
+.messageCard {
+    width: 100%;
+    padding: 18px 20px;
+    background: rgba(255, 255, 255, 0.14);
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 8px;
+    color: white;
+
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.errorCard {
+    width: 100%;
+    padding: 18px 20px;
+    background: rgba(120, 20, 40, 0.22);
+
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 8px;
+    color: white;
+
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.infoStrip {
+    margin-top: 26px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.infoCard {
+    width: calc(33.333% - 10px);
+    min-width: 220px;
+    min-height: 110px;
+
+    padding: 14px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.93), rgba(238, 247, 250, 0.88));
+    border-radius: 10px;
+
+    color: rgb(17, 42, 58);
+    clip-path: polygon(0 0, 100% 0, 100% 84%, 90% 100%, 0 100%);
+    border: 2px solid rgba(120, 200, 230, 0.4);
+}
+
+.infoCard h3 {
+    margin: 0 0 8px;
+    font-size: 1rem;
+}
+
+.infoCard p {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.4;
+}
+
+.visuallyHidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+@media (max-width: 1500px) {
+  .timetableContentColumn {
+    width: calc(100vw - 380px);
+    margin-left: 180px;
+    margin-right: 280px;
+  }
+
+  .timetableHero {
+    left: 24px;
+    width: 360px;
+  }
+
+  .timetableSummaryCard {
+    right: 20px;
+    width: 230px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .timetableHero,
+  .timetableSummaryCard {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    margin: 0 auto 24px;
+    width: min(92vw, 500px);
+  }
+
+  .timetablePageLayout {
+    padding-top: 100px;
+  }
+
+  .timetableContentColumn {
+    width: min(92vw, 1050px);
+    margin: 0 auto;
+    padding-top: 0;
+    padding-bottom: 60px;
+  }
+
+  .timetableHeading {
+    font-size: 1.8rem;
+  }
+
+  .infoCard {
+    width: calc(50% - 7px);
+  }
+}
+
+@media (max-width: 700px) {
+  .timetableHeroContent h1 {
+    font-size: 1.6rem;
+  }
+
+  .timetablePanel,
+  .tableCard {
+    padding: 16px;
+  }
+
+  .dayTabs {
+    gap: 10px;
+  }
+
+  .dayButton {
+    min-width: calc(50% - 5px);
+    padding: 14px 12px;
+    font-size: 14px;
+  }
+
+  .table {
+    min-width: 640px;
+  }
+
+  .table th,
+  .table td {
+    padding: 12px 10px;
+  }
+
+  .infoCard {
+    width: 100%;
+  }
+}
