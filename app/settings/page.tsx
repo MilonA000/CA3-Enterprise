@@ -200,7 +200,7 @@ export default function SettingsPage() {
   async function handleSaveSettings() {
     if (!user?.studentId) {
       setSaveMessage("You must be logged in to save settings.");
-      setTimeout(() => setSaveMessage(""), 2000);
+      setTimeout(() => setSaveMessage(""), 2567);
       return;
     }
 
@@ -337,9 +337,7 @@ export default function SettingsPage() {
             <section className={styles.settingsPanel}>
               <h2 className={styles.settingsHeading}>Preferences:</h2>
 
-              {loadingSettings && (<p className={styles.statusMessage}>Loading saved settings...</p>)}
-
-              {saveMessage && (<p className={styles.statusMessage} role="status">{saveMessage}</p>)}
+              
 
               <div className={styles.settingsGrid}>
                 <div className={styles.settingsCard}>
@@ -402,6 +400,10 @@ export default function SettingsPage() {
                     </select>
                   </label>
 
+                  {loadingSettings && (<p className={styles.statusMessage}>Loading saved settings...</p>)}
+
+                  {saveMessage && (<p className={styles.statusMessage} role="status">{saveMessage}</p>)}
+                  
                   <div className={styles.buttonRow}>
                     
                     <button type="button" className={styles.saveButton} onClick={handleSaveSettings} disabled={savingSettings}>{savingSettings ? "Saving..." : "Save Settings"}</button>
