@@ -6,8 +6,7 @@ export const societies: Society[] = [
     slug: "green-campus-society",
     name: "Green Campus Society",
     category: "Volunteering",
-    description:
-      "A student-led group focused on sustainability, campus clean-ups, and eco-awareness events.",
+    description: "A student-led group focused on sustainability, campus clean-ups, and eco-awareness events.",
     meetingDay: "Tuesday",
     location: "Student Centre, Room 2.14",
     tags: ["sustainability", "community", "environment"],
@@ -21,8 +20,7 @@ export const societies: Society[] = [
     slug: "code-crafters",
     name: "Code Crafters",
     category: "Tech",
-    description:
-      "A welcoming society for coding practice, hack nights, app ideas, and beginner-friendly workshops.",
+    description: "A welcoming society for coding practice, hack nights, app ideas, and beginner-friendly workshops.",
     meetingDay: "Thursday",
     location: "Innovation Lab",
     tags: ["coding", "hackathons", "workshops"],
@@ -36,8 +34,7 @@ export const societies: Society[] = [
     slug: "global-cultures-club",
     name: "Global Cultures Club",
     category: "Cultural",
-    description:
-      "Celebrates cultures through food nights, language exchanges, performances, and shared traditions.",
+    description: "Celebrates cultures through food nights, language exchanges, performances, and shared traditions.",
     meetingDay: "Wednesday",
     location: "Arts Building, Hall B",
     tags: ["culture", "language", "events"],
@@ -51,8 +48,7 @@ export const societies: Society[] = [
     slug: "campus-gamers-guild",
     name: "Campus Gamers Guild",
     category: "Gaming",
-    description:
-      "Casual and competitive gaming sessions, tournaments, and social meetups for all skill levels.",
+    description: "Casual and competitive gaming sessions, tournaments, and social meetups for all skill levels.",
     meetingDay: "Friday",
     location: "Student Hub, Games Lounge",
     tags: ["esports", "board games", "social"],
@@ -66,8 +62,7 @@ export const societies: Society[] = [
     slug: "business-network-society",
     name: "Business Network Society",
     category: "Academic",
-    description:
-      "Helps students build confidence through talks, networking practice, case-study evenings, and career panels.",
+    description: "Helps students build confidence through talks, networking practice, case-study evenings, and career panels.",
     meetingDay: "Monday",
     location: "Business School, Room 1.08",
     tags: ["networking", "careers", "business"],
@@ -81,8 +76,7 @@ export const societies: Society[] = [
     slug: "rhythm-room",
     name: "Rhythm Room",
     category: "Music & Arts",
-    description:
-      "A creative community for musicians, singers, and performers with open mic nights and collaborative sessions.",
+    description: "A creative community for musicians, singers, and performers with open mic nights and collaborative sessions.",
     meetingDay: "Tuesday",
     location: "Performing Arts Studio",
     tags: ["music", "performance", "creative"],
