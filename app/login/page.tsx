@@ -20,6 +20,7 @@ export default function LoginPage() {
     e.preventDefault()
     setError("")
     setSuccess("")
+    setTimeout(() => setError(""), 3000);
 
     if (!studentId.trim() || !password.trim()) {
       setError("Please enter both your student ID and password.")
