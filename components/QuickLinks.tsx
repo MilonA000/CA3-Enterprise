@@ -1,6 +1,5 @@
 "use client"
 
-import { useEffect, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import styles from "./QuickLinks.module.css"
@@ -37,13 +36,6 @@ export default function QuickLinks() {
                 <Link href="/campus-map" className={styles.QuickLinksLink4}>Campus Map<Image className={styles.MapImage1}
                     src="/map-logo.png"
                     alt="Map Logo"
-                    width={20}
-                    height={20}/>
-                </Link>
-
-                <Link href="/food" className={styles.QuickLinksLink5}>Canteen<Image className={styles.FoodImage1}
-                    src="/canteen-logo.png"
-                    alt="Burger Logo"
                     width={20}
                     height={20}/>
                 </Link>
