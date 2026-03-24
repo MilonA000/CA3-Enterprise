@@ -1,7 +1,7 @@
 .AccountInfoCard {
     position: fixed;
     left: 60px;
-    top: 369.67px;
+    top: 136.9px;
 
     background: linear-gradient(135deg, rgba(10, 92, 126, 0.9), rgba(33, 164, 207, 0.82));
     border-radius: 15px;
@@ -80,8 +80,8 @@
 }
 
 .settingsHero {
-    width:700px;
-    height: 306.7px;
+    width: 700px;
+    height: 170px;
 }
 
 .settingsHeroContent h1 {
@@ -95,7 +95,7 @@
 }
 
 .settingsHeroContent p {
-    margin: 0 0 40px;
+    margin: 0 0 10px;
     font-size: 1rem;
     color: rgb(17, 42, 58);
 }
@@ -112,8 +112,9 @@
     font-weight: bold;
     color: rgb(17, 42, 58);
 
-    padding-bottom: 10px;
-    margin-top: -165.69px;
+    padding-bottom: 20px;
+    margin-top: -50px;
+    
 }
 
 .settingsCard h3{
@@ -129,12 +130,13 @@
 .toggleRow {
     font-size: 19px;
     margin-left: 20.67px;
-    color: rgb(17, 42, 58);
+    margin-top: 10px;
 
+    color: rgb(17, 42, 58);
     display: flex;
     justify-content: space-between;
-    align-items: center;
     
+    align-items: center;
     cursor: pointer;
 }
 
@@ -164,6 +166,8 @@
     display: flex;
     font-size: 19px;
     color: rgb(17, 42, 58);
+
+    margin-top: 10px;
 }
 
 .selectInput {
@@ -206,18 +210,13 @@
 .selectInput:hover {
     transform: translateY(-1px);
     border-color: rgba(255, 255, 255, 0.3);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.18),
-        0 10px 24px rgba(70, 20, 40, 0.18);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 10px 24px rgba(70, 20, 40, 0.18);
 }
 
 .selectInput:focus {
     outline: none;
     border-color: rgba(33, 164, 207, 0.9);
-    box-shadow:
-        0 0 0 3px rgba(33, 164, 207, 0.22),
-        inset 0 1px 0 rgba(255, 255, 255, 0.16),
-        0 10px 24px rgba(70, 20, 40, 0.18);
+    box-shadow: 0 0 0 3px rgba(33, 164, 207, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 10px 24px rgba(70, 20, 40, 0.18);
 }
 
 .selectInput option {
@@ -238,10 +237,7 @@
 
     border-radius: 7.6px;
     cursor: pointer;
-    box-shadow:
-        inset 0 2px 4px rgba(40, 8, 22, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.12),
-        0 4px 12px rgba(70, 20, 40, 0.2);
+    box-shadow: inset 0 2px 4px rgba(40, 8, 22, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 4px 12px rgba(70, 20, 40, 0.2);
 
     width: 267px;
     clip-path: polygon(0 0, 100% 0, 100% 75%, 85% 100%, 0 100%);
@@ -249,10 +245,7 @@
 
 .saveButton:hover {
     background: linear-gradient(90deg, rgba(132, 64, 90, 0.98) 0%, rgba(164, 82, 114, 0.98) 45%, rgba(197, 110, 141, 0.98) 100%);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.22),
-        inset 0 -1px 0 rgba(70, 20, 40, 0.16),
-        0 10px 24px rgba(70, 20, 40, 0.28);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), inset 0 -1px 0 rgba(70, 20, 40, 0.16), 0 10px 24px rgba(70, 20, 40, 0.28);
     transform: translateY(-1px);
 
     filter: saturate(1.03);
@@ -260,39 +253,30 @@
 
 .saveButton:active {
     transform: translateY(1px);
-    box-shadow:
-        inset 0 2px 4px rgba(40, 8, 22, 0.16),
-        inset 0 1px 0 rgba(255, 255, 255, 0.12),
-        0 4px 12px rgba(70, 20, 40, 0.18);
+    box-shadow: inset 0 2px 4px rgba(40, 8, 22, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 4px 12px rgba(70, 20, 40, 0.18);
 }
 
 .restoreButton {
     color: white;
     margin-top: 15px;
-    margin-left: 67px;
-    width: 200px;
+    margin-left: 37px;
+    width: 267px;
 
-    font-size: 18px;
+    font-size: 25px;
     border: 1px solid rgb(72, 72, 72);
     background: linear-gradient(135deg, rgba(7, 57, 79, 0.92), rgba(58, 161, 196, 0.92));
-    padding: 10px;
+    padding: 15px;
 
     border-radius: 7.6px;
     cursor: pointer;
-    box-shadow:
-        inset 0 2px 4px rgba(40, 8, 22, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.12),
-        0 4px 12px rgba(70, 20, 40, 0.2);
+    box-shadow: inset 0 2px 4px rgba(40, 8, 22, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 4px 12px rgba(70, 20, 40, 0.2);
 
-    clip-path: polygon(0 0, 100% 0, 100% 75%, 85% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%, 0 75%);
 }
 
 .restoreButton:hover {
     background: linear-gradient(135deg, rgba(7, 57, 79, 0.72) 0%, rgba(58, 161, 196, 0.92) 100%);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.22),
-        inset 0 -1px 0 rgba(70, 20, 40, 0.16),
-        0 10px 24px rgba(70, 20, 40, 0.28);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), inset 0 -1px 0 rgba(70, 20, 40, 0.16), 0 10px 24px rgba(70, 20, 40, 0.28);
     transform: translateY(-1px);
 
     filter: saturate(1.03);
@@ -300,10 +284,7 @@
 
 .restoreButton:active {
     transform: translateY(1px);
-    box-shadow:
-        inset 0 2px 4px rgba(40, 8, 22, 0.16),
-        inset 0 1px 0 rgba(255, 255, 255, 0.12),
-        0 4px 12px rgba(70, 20, 40, 0.18);
+    box-shadow: inset 0 2px 4px rgba(40, 8, 22, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 4px 12px rgba(70, 20, 40, 0.18);
 }
 
 .summaryCard {
@@ -376,6 +357,6 @@
     border-radius: 8px;
 
     background: rgba(255, 255, 255, 0.14);
-    color: rgb(17, 42, 58);
+    color: rgb(183, 65, 65);
     font-weight: 600;
 }
