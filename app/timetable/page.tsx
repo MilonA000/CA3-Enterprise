@@ -68,7 +68,6 @@ export default function Timetable() {
   return (
     <>
       <main className={styles.timetablePageLayout}>
-
         <Navbar />
 
         <Background />
@@ -77,8 +76,7 @@ export default function Timetable() {
 
         <section className={styles.timetableHero}>
           <div className={styles.timetableHeroContent}>
-
-            <p className={styles.eyebrow}>Campus Companion</p>
+            <div className={styles.eyebrow}>Campus Companion</div>
 
             <h1>Student Timetable</h1>
 
@@ -102,72 +100,97 @@ export default function Timetable() {
 
             <div className={styles.summaryStat}>
               <span className={styles.summaryLabel}>Status</span>
-              <span className={styles.summaryValue}>
-                {loading ? "Loading..." : error ? "Error" : "Ready"}
-              </span>
+
+              <span className={styles.summaryValue}>{loading ? "Loading..." : error ? "Error" : "Ready"}</span>
             </div>
+
           </div>
         </aside>
 
         <div className={styles.timetableContentColumn}>
           <section className={`${styles.section} ${styles.timetablePanel}`}>
+
             <h2 className={styles.timetableHeading}>Weekly Schedule</h2>
 
-            <p className={styles.timetableSubheading}>Select a day to view scheduled classes, locations, and delivery details.</p>
+            <p className={styles.timetableSubheading}>Select a day to view scheduled classes, locations and delivery details.
+            </p>
 
             <div className={styles.dayTabs} role="tablist" aria-label="Select timetable day">
+              
               {DAYS.map((day) => (
-                
-                <button key={day} type="button" role="tab" aria-selected={selectedDay === day} 
-                    className={`${styles.dayButton} ${selectedDay === day ? styles.activeDayButton : ""}`} onClick={() => 
-                        setSelectedDay(day)}>{day}</button>))}
+
+                <button key={day} type="button" role="tab" aria-selected={selectedDay === day} className={`${styles.dayButton} ${
+                    selectedDay === day ? styles.activeDayButton : ""}`} onClick={() => setSelectedDay(day)}>{day}
+                </button>
+              
+              ))}
             </div>
 
             <h3 className={styles.visuallyHidden}>{pageTitle}</h3>
 
-            {loading && (<div className={styles.messageCard}>Loading timetable...</div>)}
+            {loading && (
+              <div className={styles.messageCard}>Loading timetable...</div>)}
 
-            {error && (<div className={styles.errorCard} role="alert">{error}</div>)}
+            {error && (
 
-            {!loading && !error && entries.length === 0 && (<div className={styles.messageCard}>No classes scheduled for {selectedDay}.</div>)}
+              <div className={styles.errorCard} role="alert">{error}</div>)}
+
+            {!loading && !error && entries.length === 0 && (
+              <div className={styles.messageCard}>No Classes Scheduled for {selectedDay}.</div>)}
 
             {!loading && !error && entries.length > 0 && (
-            
-            <div className={styles.tableCard}>
-                <div className={styles.tableWrapper}>               
+              <div className={styles.tableCard}>
+                <div className={styles.tableWrapper}>
                   <table className={styles.table}>
+
                     <caption className={styles.visuallyHidden}>Timetable entries for {selectedDay}</caption>
-                        <thead>
-                            <tr>
-                                <th scope="col">Time</th>
-                                <th scope="col">Module</th>
-                                <th scope="col">Location</th>
-                                <th scope="col">Lecturer</th>
-                                <th scope="col">Mode</th>
-                                <th scope="col">Week</th>
-                            </tr>
-                        </thead>
+                    
+                    <thead>
+                      <tr>
+                        <th scope="col">Time</th>
+                        <th scope="col">Module</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Lecturer</th>
+                        <th scope="col">Mode</th>
+                        <th scope="col">Week</th>
+                      </tr>
+                    </thead>
                     <tbody>
+                      
                       {entries.map((entry) => (
+                        
                         <tr key={entry.id}>
-                            <td className={styles.timeCell}>
-                                {formatTime(entry.start_time)} -{" "}
-                                {formatTime(entry.end_time)}
-                            </td>
-                            <td>
-                                <div className={styles.moduleName}>{entry.module_name}</div>
-                                <div className={styles.moduleCode}>{entry.module_code}</div>
-                            </td>
-                            <td>{entry.location}</td>
-                            <td>{entry.lecturer_name}</td>
-                            <td>
-                                <span className={styles.modeBadge}>{entry.delivery_mode}</span>
-                            </td>
-                            <td>
-                                <span className={styles.weekBadge}>{entry.week_type}</span>
-                            </td>
+                          
+                          <td className={styles.timeCell}>
+                            {formatTime(entry.start_time)} -{" "}
+                            {formatTime(entry.end_time)}
+                          </td>
+                          
+                          <td>
+
+                            <div className={styles.moduleName}>{entry.module_name}</div>
+                            
+                            <div className={styles.moduleCode}>{entry.module_code}</div>
+                          
+                          </td>
+                          
+                          <td>{entry.location}</td>
+                          
+                          <td>{entry.lecturer_name}</td>
+                          
+                          <td>
+
+                            <span className={styles.modeBadge}>{entry.delivery_mode}</span>
+                          
+                          </td>
+                          
+                          <td>
+
+                            <span className={styles.weekBadge}>{entry.week_type}</span>
+                          
+                          </td>
                         </tr>
-                        ))}
+                      ))}
                     </tbody>
                   </table>
                 </div>
@@ -179,7 +202,7 @@ export default function Timetable() {
             <div className={styles.infoCard}>
               <h3>Fictional data only</h3>
 
-              <p>All timetable entries, locations, lecturer names, and modules are fictional for coursework use.</p>
+              <p>All timetable entries, locations, lecturer names and modules are fictional for coursework use.</p>
             </div>
 
             <div className={styles.infoCard}>
