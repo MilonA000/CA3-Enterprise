@@ -2,8 +2,6 @@
 
 import { useMemo, useState } from "react";
 import { campusLocations } from "@/data/locations";
-import Link from "next/link";
-import Image from "next/image";
 import styles from "./Mappage.module.css";
 import Navbar from "@/components/Navbar"
 import Background from "@/components/BackgroundStyles";
@@ -20,7 +18,6 @@ const filters = [
 ] as const;
 
 export default function CampusMapPage() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [activeFilter, setActiveFilter] =
     useState<(typeof filters)[number]>("All");
@@ -72,7 +69,7 @@ export default function CampusMapPage() {
                 <div className={styles.mapHeroContent}>
                   <div>
                     
-                    <p className={styles.eyebrow}>Campus Companion</p>
+                    <div className={styles.eyebrow}>Campus Companion</div>
 
                     <h1>Campus Map</h1>
 
