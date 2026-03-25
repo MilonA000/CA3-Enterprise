@@ -81,11 +81,9 @@ export default async function SocietyDetailPage({
               <button className={styles.secondaryButton} type="button">View upcoming events</button>
             </div>
             
-            <Link href="/societies" className={styles.backLink}>← Back to societies</Link>
+            <Link href="/societies" className={styles.backLink}>← Back to Societies</Link>
 
           </article>          
-          
-          
           
         </section>
       </main>
