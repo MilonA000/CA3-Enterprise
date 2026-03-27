@@ -1,216 +1,220 @@
-.pageBackground {
-    position: fixed;
-    inset: 0;
-    background: rgb(236, 248, 252);
-    
-    z-index: -10;
-    pointer-events: none;
+.page {
+    min-height: 100vh;
+    position: relative;
 }
 
-.Decoration1::before,
-.Decoration2::before,
-.Decoration3::before,
-.Decoration4::before,
-.Decoration4::after,
-.Decoration5::before,
-.Decoration5::after,
-.Decoration6::before {
-    content: "";
-    position: fixed;
+.eyebrow {
+    margin: 0 0 14px 6px;
+    color: rgba(10, 92, 126, 0.92);
+    font-size: 18px;
+
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.container {
+    position: relative;
+    margin-left: 188px;
+    margin-top: 120px;
+
+    margin-bottom: 80px;
+    width: 1120px;
+    z-index: 3;
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    padding: 0;
+
     background: transparent;
-
-    pointer-events: none;
-    z-index: -1;
-    filter: blur(2px);
+    border: none;
+    box-shadow: none;
 }
 
-.Decoration1::before {
-    width: 1400px;
-    top: 380px;
-    bottom: 0;
+.title {
+    margin: 0;
+    max-width: 760px;
+    color: rgb(17, 42, 58);
 
-    right: 135px;
-    border-radius: 28px;
-    border: 1px solid rgba(120, 200, 230, 0.7);
+    font-family: "Poppins", "Montserrat", sans-serif;
+    font-size: 4rem;
+    font-weight: 800;
+
+    line-height: 0.95;
+    letter-spacing: -0.04em;
 }
 
-.Decoration2::before {
-    width: 1000px;
-    height: 1000px;
-    top: 470px;
-    right: 111px;
+.subtitle {
+    margin-top: 22px;
+    margin-bottom: 42px;
+    max-width: 980px;
 
-    border-radius: 28px;
-    border: 1px solid rgba(120, 200, 230, 0.7);
-    transform: rotate(100deg);
+    color: rgba(34, 58, 70, 0.86);
+    font-size: 1.1rem;
+    line-height: 1.9;
+
+    font-weight: 500;
 }
 
-.Decoration3::before {
-    width: 800px;
-    height: 700px;
-    top: 630px;
-    right: 520px;
+.card {
+    position: relative;
+    width: 100%;
+    padding: 26px 26px 28px 26px;
 
-    border-radius: 28px;
-    border: 1px solid rgba(120, 200, 230, 0.7);
-    transform: rotate(150deg);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.93), rgba(238, 247, 250, 0.88));
+    border-bottom: 2px solid rgba(188, 105, 132, 0.55);
+    border-left: 2px solid rgba(188, 105, 132, 0.55);
+
+    border-top: 2px solid rgba(120, 200, 230, 0.4);
+    border-right: 2px solid rgba(120, 200, 230, 0.4);
+    clip-path: polygon(0 0, 100% 0, 100% 84%, 89% 100%, 0 100%);
+
+    box-shadow: 0 12px 26px rgba(19, 59, 74, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+    z-index: 3;
 }
 
-.Decoration4::before {
-    width: 400px;
-    height: 400px;
-    top: -10px;
-    left: -28px;
+.successMessage {
+    margin-bottom: 20px;
+    padding: 18px 18px;
+    background: rgba(120, 200, 230, 0.12);
 
-    border-radius: 20px;
-    transform: rotate(14.5deg);
-    border: 1px solid rgba(188, 105, 132, 0.7);
-}
-
-.Decoration4::after {
-    width: 500px;
-    height: 400px;
-    top: -10px;
-    left: -30px;
-
-    border-radius: 18px;
-    transform: rotate(160deg);
-    border: 1px solid rgba(188, 105, 132, 0.7);
-}
-
-.Decoration5::before {
-    width: 230px;
-    height: 200px;
-    top: -30px;
-    left: -50px;
-
-    border-radius: 5px;
-    transform: rotate(120deg);
-    border: 1px solid rgba(188, 105, 132, 0.7);
-}
-
-.Decoration5::after {
-    width: 260px;
-    height: 200px;
-    top: -27px;
-
-    right: -50px;
+    border: 1px solid rgba(60, 130, 158, 0.2);
     border-radius: 8px;
-
-    filter: blur(1px);
-    transform: rotate(125deg);
-    border: 1px solid rgba(188, 105, 132, 0.7);
 }
 
-.Decoration6::before {
-    width: 360px;
-    height: 340px;
-    top: -20px;
-    right: -40px;
-
-    border-radius: 10px;
-    transform: rotate(153deg);
-    border: 1px solid rgba(188, 105, 132, 0.7);
+.successMessage h2 {
+    margin: 0 0 6px 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: rgb(18, 38, 50);
 }
 
-.wrapper::before,
-.wrapper::after,
-.main::before,
-.main::after,
-.section::before,
-.section::after,
-.section2::before,
-.section2::after {
-    content: "";
-    position: fixed;
-    pointer-events: none;
-    filter: blur(12px);
+.successMessage p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: rgba(35, 56, 65, 0.85);
 }
 
-.wrapper::before {
-    top: 380px;
-    left: -70vw;
-    width: 200vw;
-    height: 200px;
-
-    background: linear-gradient(179deg, rgba(188, 105, 132, 0.18), rgba(230, 206, 214, 0.14), rgba(136, 70, 96, 0.16), rgba(76, 24, 40, 0.14), rgba(46, 16, 26, 0.12));
-    transform: rotate(30deg);
-    z-index: -10;
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
 }
 
-.wrapper::after {
-    top: 480px;
-    left: -70vw;
-    width: 200vw;
-    height: 300px;
-
-    background: linear-gradient(rgba(169, 57, 94, 0.16), rgba(232, 205, 214, 0.12), rgba(173, 96, 119, 0.14), rgba(158, 55, 89, 0.12));
-    transform: rotate(28deg);
-    z-index: -6;
+.formGroup {
+    display: flex;
+    flex-direction: column;
 }
 
-.main::before {
-    bottom: 270px;
-    left: -70vw;
-    width: 200vw;
-    height: 110px;
-
-    background: linear-gradient(rgba(38, 124, 158, 0.16), rgba(120, 200, 230, 0.14), rgba(60, 130, 158, 0.12));
-    transform: rotate(33.5deg);
-    z-index: -5;
+.formGroup:nth-child(6) {
+    grid-column: 1 / -1;
 }
 
-.main::after {
-    bottom: 2px;
-    left: -120vw;
-    width: 300vw;
-    height: 200px;
-
-    background: linear-gradient(180deg, rgba(72, 24, 38, 0.14), rgba(188, 102, 130, 0.12), rgba(220, 192, 201, 0.10));
-    transform: rotate(30.5deg);
-    z-index: -5;
+.formGroup label {
+    margin: 0 0 6px 2px;
+    color: rgba(23, 42, 52, 0.85);
+    font-size: 14px;
+    font-weight: 700;
 }
 
-.section::before {
-    bottom: 330px;
-    left: -90vw;
-    width: 200vw;
-    height: 37px;
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+    padding: 12px 14px;
+    border: 1px solid rgba(120, 200, 230, 0.3);
+    border-radius: 6px;
 
-    background: linear-gradient(rgba(120, 200, 230, 0.20), rgba(60, 130, 158, 0.18));
-    transform: rotate(42deg);
-    z-index: -2;
+    background: rgba(255, 255, 255, 0.96);
+    color: rgb(22, 28, 32);
+    font-size: 15px;
+
+    font-weight: 500;
 }
 
-.section::after {
-    bottom: 110px;
-    left: -100vw;
-    width: 200vw;
-    height: 200px;
-
-    background: linear-gradient(180deg, rgba(96, 42, 58, 0.14), rgba(220, 132, 162, 0.12));
-    transform: rotate(31.5deg);
-    z-index: -2;
+.formGroup textarea {
+    min-height: 140px;
+    resize: vertical;
 }
 
-.section2::before {
-    bottom: 150px;
-    left: -112vw;
-    width: 200vw;
-    height: 200px;
-
-    background: linear-gradient(180deg, rgba(30, 95, 120, 0.14), rgba(120, 200, 230, 0.12));
-    transform: rotate(38.5deg);
-    z-index: -2;
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+    outline: 3px solid rgba(120, 200, 230, 0.35);
+    border-color: rgba(33, 164, 207, 0.8);
 }
 
-.section2::after {
-    bottom: 200px;
-    left: -90vw;
-    width: 200vw;
-    height: 100px;
+.submitButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-    background: linear-gradient(180deg, rgba(28, 88, 110, 0.16), rgba(120, 200, 230, 0.12));
-    transform: rotate(38.5deg);
-    z-index: -4;
+    min-width: 160px;
+    height: 50px;
+    padding: 0 18px;
+
+    background: linear-gradient(90deg, rgba(112, 48, 70, 0.98) 0%, rgba(160, 80, 108, 0.98) 50%, rgba(200, 110, 140, 0.98) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    clip-path: polygon(0 0, 100% 0, 100% 76%, 88% 100%, 0 100%);
+
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 -1px 0 rgba(70, 20, 40, 0.18), 0 8px 18px rgba(70, 20, 40, 0.18);
+    transition: 0.16s ease;
+}
+
+.submitButton:hover {
+    transform: translateY(-1px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), inset 0 -1px 0 rgba(70, 20, 40, 0.16), 0 10px 22px rgba(70, 20, 40, 0.24);
+}
+
+.errorMessage {
+    margin-bottom: 20px;
+    padding: 18px;
+    background: rgba(220, 38, 38, 0.08);
+    
+    border: 1px solid rgba(220, 38, 38, 0.2);
+    border-radius: 8px;
+}
+
+.errorMessage h2 {
+    margin: 0 0 6px 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: rgb(120, 30, 30);
+}
+
+.errorMessage p {
+    margin: 0;
+    color: rgba(90, 30, 30, 0.9);
+}
+
+@media (max-width: 1100px) {
+    .container {
+        margin-left: 80px;
+        width: calc(100vw - 160px);
+    }
+
+    .form {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 760px) {
+    .container {
+        margin-left: 20px;
+        width: calc(100vw - 40px);
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .submitButton {
+        width: 100%;
+    }
 }
