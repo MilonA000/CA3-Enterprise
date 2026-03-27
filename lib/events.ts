@@ -1,4 +1,4 @@
-import { supabase } from "@/lib/supabase";
+import { supabase } from "@/lib/supabase"
 
 export type EventItem = {
   id: string;
@@ -13,6 +13,7 @@ export type EventItem = {
   featured: boolean;
   foodProvided: boolean;
   foodInfo: string;
+  societySlug: string;
   menu: string[];
 };
 
@@ -29,13 +30,19 @@ type EventRow = {
   food_provided: boolean;
   food_info: string;
   menu: string[] | null;
-  societies?: { name: string } | { name: string }[] | null;
+  societies?:
+    | { name: string; slug: string }
+    | { name: string; slug: string }[]
+    | null;
 };
 
 function mapEvent(row: EventRow): EventItem {
-  const societyName = Array.isArray(row.societies)
-    ? row.societies[0]?.name ?? "Unknown Society"
-    : row.societies?.name ?? "Unknown Society";
+  const societyData = Array.isArray(row.societies)
+    ? row.societies[0]
+    : row.societies;
+
+  const societyName = societyData?.name ?? "Unknown Society";
+  const societySlug = societyData?.slug ?? "";
 
   return {
     id: row.id,
@@ -50,6 +57,7 @@ function mapEvent(row: EventRow): EventItem {
     featured: row.featured,
     foodProvided: row.food_provided,
     foodInfo: row.food_info,
+    societySlug,
     menu: row.menu ?? [],
   };
 }
@@ -70,7 +78,7 @@ export async function getAllEvents(): Promise<EventItem[]> {
       food_provided,
       food_info,
       menu,
-      societies(name)
+      societies(name, slug)
     `)
     .order("event_date", { ascending: true });
 
@@ -97,7 +105,7 @@ export async function getEventBySlug(slug: string): Promise<EventItem | null> {
       food_provided,
       food_info,
       menu,
-      societies(name)
+      societies(name, slug)
     `)
     .eq("slug", slug)
     .single();
