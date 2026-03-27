@@ -45,6 +45,7 @@ export default function LoginPage() {
 
       if (!res.ok || !result.success) {
         setError(result.message || "Invalid student ID or password.")
+        console.log("Error, Wrong details Entered")
         return
       }
 
