@@ -1,4 +1,4 @@
-import { Society } from "@/types/society";
+import { Society } from "@/types/society"
 
 export const societies: Society[] = [
   {
