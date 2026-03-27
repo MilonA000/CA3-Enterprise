@@ -1,4 +1,4 @@
-import { societies } from "@/data/societies";
+import { societies } from "@/data/societies"
 import { Society, SocietyCategory } from "@/types/society"
 
 export function getAllSocieties(): Society[] {
