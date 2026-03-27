@@ -1,11 +1,11 @@
-"use client";
+"use client"
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import styles from "./settingspage.module.css";
-import Navbar from "@/components/Navbar";
-import { supabase } from "@/lib/supabase";
-import Background from "@/components/BackgroundStyles";
+import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
+import styles from "./settingspage.module.css"
+import Navbar from "@/components/Navbar"
+import { supabase } from "@/lib/supabase"
+import Background from "@/components/BackgroundStyles"
 
 type User = {
   name: string;
@@ -35,6 +35,14 @@ type LocalSettings = {
   societyAlerts: boolean;
   helpdeskUpdates: boolean;
   defaultPage: DefaultPage;
+};
+
+type ProfileRow = {
+  id: string;
+  student_id: string;
+  name: string;
+  course: string;
+  email?: string;
 };
 
 const DEFAULT_SETTINGS: LocalSettings = {
@@ -95,29 +103,24 @@ export default function SettingsPage() {
   const [saveMessage, setSaveMessage] = useState("");
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("campusUser");
-    if (storedUser) {
-      const parsedUser: User = JSON.parse(storedUser);
-      setUser(parsedUser);
-    }
-
     const storedSettings = localStorage.getItem(LOCAL_SETTINGS_KEY);
-    if (storedSettings) {
-      try {
-        const parsedSettings: LocalSettings = JSON.parse(storedSettings);
 
-        setLargeText(parsedSettings.largeText);
-        setHighContrast(parsedSettings.highContrast);
-        setReducedMotion(parsedSettings.reducedMotion);
-        setEventReminders(parsedSettings.eventReminders);
-        setSocietyAlerts(parsedSettings.societyAlerts);
-        setHelpdeskUpdates(parsedSettings.helpdeskUpdates);
-        setDefaultPage(parsedSettings.defaultPage);
+    if (!storedSettings) return;
 
-        applySettingsToDocument(parsedSettings);
-      } catch {
-        console.error("Could not parse saved local settings.");
-      }
+    try {
+      const parsedSettings: LocalSettings = JSON.parse(storedSettings);
+
+      setLargeText(parsedSettings.largeText);
+      setHighContrast(parsedSettings.highContrast);
+      setReducedMotion(parsedSettings.reducedMotion);
+      setEventReminders(parsedSettings.eventReminders);
+      setSocietyAlerts(parsedSettings.societyAlerts);
+      setHelpdeskUpdates(parsedSettings.helpdeskUpdates);
+      setDefaultPage(parsedSettings.defaultPage);
+
+      applySettingsToDocument(parsedSettings);
+    } catch {
+      console.error("Could not parse saved local settings.");
     }
   }, []);
 
@@ -146,6 +149,61 @@ export default function SettingsPage() {
   ]);
 
   useEffect(() => {
+    async function loadProfileFromSession(sessionUserId: string) {
+      const { data: profile, error } = await supabase
+        .from("profiles")
+        .select("id, student_id, name, course, email")
+        .eq("id", sessionUserId)
+        .single();
+
+      if (error || !profile) {
+        console.error("Could not load profile:", error);
+        setUser(null);
+        return;
+      }
+
+      const typedProfile = profile as ProfileRow;
+
+      setUser({
+        name: typedProfile.name,
+        studentId: typedProfile.student_id,
+        course: typedProfile.course,
+        loggedIn: true,
+      });
+    }
+
+    async function loadUserFromSession() {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      if (!session) {
+        setUser(null);
+        return;
+      }
+
+      await loadProfileFromSession(session.user.id);
+    }
+
+    loadUserFromSession();
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange(async (_event, session) => {
+      if (!session) {
+        setUser(null);
+        return;
+      }
+
+      await loadProfileFromSession(session.user.id);
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
+
+  useEffect(() => {
     async function fetchSettings() {
       if (!user?.studentId) return;
 
@@ -160,6 +218,7 @@ export default function SettingsPage() {
 
       if (error) {
         if (error.code !== "PGRST116") {
+          console.error("Could not load saved settings:", error);
           setSaveMessage("Could not load saved settings.");
         }
         setLoadingSettings(false);
@@ -223,6 +282,7 @@ export default function SettingsPage() {
       .upsert(payload, { onConflict: "student_id" });
 
     if (error) {
+      console.error("Save settings error:", error);
       setSaveMessage("Could not save settings.");
     } else {
       const localSettings: LocalSettings = {
@@ -269,155 +329,165 @@ export default function SettingsPage() {
     router.push(getRouteForDefaultPage(defaultPage));
   }
 
-  function handleSignOut() {
-    localStorage.removeItem("campusUser");
+  async function handleSignOut() {
+    const { error } = await supabase.auth.signOut();
+
+    if (error) {
+      console.error("Sign out error:", error);
+      setSaveMessage("Could not sign out.");
+      setTimeout(() => setSaveMessage(""), 2000);
+      return;
+    }
+
     setUser(null);
+    router.push("/login");
     router.refresh();
-    window.location.reload();
   }
 
   return (
-    <>
-        <main>
-          <Navbar />
+    <main>
+      
+      <Navbar />
+      
+      <Background />
 
-          <Background />
+      <div className={styles.AccountInfoCard}>
+        <div className={styles.AccountInfoContent}>
+          <h2>Account Information:</h2>
 
-          <div className={styles.AccountInfoCard}>
-            <div className={styles.AccountInfoContent}>
-              <h2>Account Information:</h2>
+          <p><strong>Name:</strong> {user?.name || "N/A"}</p>
+        
+          <p><strong>Student ID:</strong> {user?.studentId || "N/A"}</p>
+        
+          <p><strong>Course:</strong> {user?.course || "N/A"}</p>
 
-              <p><strong>Name:</strong> {user?.name || "N/A"}</p>
-              <p><strong>Student ID:</strong> {user?.studentId || "N/A"}</p>
-              <p><strong>Course:</strong> {user?.course || "N/A"}</p>
+          <button type="button" className={styles.secondaryButton} onClick={handleSignOut}>Sign Out</button>
+        
+        </div>
+      </div>
 
-              <button type="button" className={styles.secondaryButton} onClick={handleSignOut}>Sign Out</button>
+      <div className={styles.summaryCard}>
+        <div className={styles.summaryCardContent}>
+          <h2 className={styles.summaryTitle}>Current Summary:</h2>
+
+          <p><strong>Large Text:</strong> {largeText ? "On" : "Off"}</p>
+          <p><strong>High Contrast:</strong> {highContrast ? "On" : "Off"}</p>
+          <p><strong>Reduced Motion:</strong> {reducedMotion ? "On" : "Off"}</p>
+          <p><strong>Event Reminders:</strong> {eventReminders ? "On" : "Off"}</p>
+          <p><strong>Society Alerts:</strong> {societyAlerts ? "On" : "Off"}</p>
+          <p><strong>Helpdesk Updates:</strong> {helpdeskUpdates ? "On" : "Off"}</p>
+          <p><strong>Default Page:</strong> {defaultPage}</p>
+
+          <div className={styles.quickLinks}>
+            
+            <button type="button" className={styles.quickLinkButton} onClick={() => setLargeText(true)}>Accessibility Help</button>
+
+            <button type="button" className={styles.quickLinkButton} onClick={() => setEventReminders(true)}>Notification Help</button>
+
+            <button type="button" className={styles.quickLinkButton} onClick={handleOpenDefaultPage}>Open Default Page</button>
+          
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.contentLayer}>
+        <section className={styles.settingsHero}>
+          <div className={styles.settingsHeroContent}>
+            <div>
+              <h1>Settings</h1>
+              
+              <p>Adjust accessibility, notifications and personal preferences for your Campus Companion experience.</p>
             </div>
           </div>
+        </section>
 
-          <div className={styles.summaryCard}>
-              <div className={styles.summaryCardContent}>
-                <h2 className={styles.summaryTitle}>Current Summary:</h2>
-                  
+        <section className={styles.settingsPanel}>
+          <h2 className={styles.settingsHeading}>Preferences:</h2>
 
-                  
-                  <p><strong>Large Text:</strong> {largeText ? "On" : "Off"}</p>
-                  <p><strong>High Contrast:</strong> {highContrast ? "On" : "Off"}</p>
-                  <p><strong>Reduced Motion:</strong> {reducedMotion ? "On" : "Off"}</p>
-                  <p><strong>Event Reminders:</strong> {eventReminders ? "On" : "Off"}</p>
-                  <p><strong>Society Alerts:</strong> {societyAlerts ? "On" : "Off"}</p>
-                  <p><strong>Helpdesk Updates:</strong> {helpdeskUpdates ? "On" : "Off"}</p>
-                  <p><strong>Default Page:</strong> {defaultPage}</p>
+          <div className={styles.settingsGrid}>
+            <div className={styles.settingsCard}>
+              <h3>Accessibility</h3>
+
+              <label className={styles.toggleRow}>
+                <span>Large text</span>
                 
+                <input type="checkbox" checked={largeText} onChange={() => setLargeText(!largeText)}/>
+              </label>
 
-
-                <div className={styles.quickLinks}>
-                  
-                  <button type="button" className={styles.quickLinkButton} onClick={() => setLargeText(true)}>Accessibility Help</button>
-
-                  <button type="button" className={styles.quickLinkButton} onClick={() => setEventReminders(true)}>Notification Help</button>
-
-                  <button type="button" className={styles.quickLinkButton} onClick={handleOpenDefaultPage}>Open Default Page</button>
+              <label className={styles.toggleRow}>
+                <span>High Contrast Mode</span>
                 
-                </div>
+                <input type="checkbox" checked={highContrast} onChange={() => setHighContrast(!highContrast)}/>
+              </label>
+
+              <label className={styles.toggleRow}>
+                <span>Reduced Motion</span>
+                
+                <input type="checkbox" checked={reducedMotion} onChange={() => setReducedMotion(!reducedMotion)}/>
+              </label>
+            </div>
+
+            <div className={styles.settingsCard}>
+              <h3>Notifications</h3>
+
+              <label className={styles.toggleRow}>
+                <span>Event Reminders</span>
+                
+                <input type="checkbox" checked={eventReminders} onChange={() => setEventReminders(!eventReminders)}/>
+              </label>
+
+              <label className={styles.toggleRow}>
+                <span>Society Alerts</span>
+
+                <input type="checkbox" checked={societyAlerts} onChange={() => setSocietyAlerts(!societyAlerts)}/>
+              </label>
+
+              <label className={styles.toggleRow}>
+                <span>Helpdesk Updates</span>
+
+                <input type="checkbox" checked={helpdeskUpdates} onChange={() => setHelpdeskUpdates(!helpdeskUpdates)}/>
+              </label>
+            </div>
+
+            <div className={styles.settingsCard}>
+              <h3>App Preferences</h3>
+
+              <label className={styles.selectGroup}>
+                <span>Default Page</span>
+
+                <select value={defaultPage} onChange={(e) =>
+                    setDefaultPage(e.target.value as DefaultPage)}className={styles.selectInput}>
+            
+                  <option>Campus Map</option>
+                  <option>Timetable</option>
+                  <option>Societies</option>
+                  <option>Helpdesk</option>
+            
+                </select>
+              </label>
+
+              <div className={styles.statusArea}>
+                {loadingSettings && (
+
+                  <p className={styles.statusMessage}>Loading saved settings...</p>)}
+
+                {!loadingSettings && saveMessage && (
+
+                  <p className={styles.statusMessage2} role="status">{saveMessage}</p>)}
               </div>
+
+              <div className={styles.buttonRow}>
+                
+                <button type="button" className={styles.saveButton} onClick={handleSaveSettings} disabled={savingSettings}>
+                    {savingSettings ? "Saving..." : "Save Settings"}</button>
+
+                <button type="button" className={styles.restoreButton} onClick={handleRestoreDefaults} disabled={savingSettings}>Restore Defaults</button>
+
+              </div>
+            </div>
           </div>
-
-          <div className={styles.contentLayer}>
-            <section className={styles.settingsHero}>
-              <div className={styles.settingsHeroContent}>
-                <div>
-                  <h1>Settings</h1>
-
-                  <p>Adjust accessibility, notifications and personal preferences for your Campus Companion experience.</p>
-                </div>
-              </div>
-            </section>
-
-            <section className={styles.settingsPanel}>
-              <h2 className={styles.settingsHeading}>Preferences:</h2>
-
-              
-
-              <div className={styles.settingsGrid}>
-                <div className={styles.settingsCard}>
-                  <h3>Accessibility</h3>
-
-                  <label className={styles.toggleRow}>
-                    <span>Large text</span>
-
-                    <input type="checkbox" checked={largeText} onChange={() => setLargeText(!largeText)}/>
-                  </label>
-
-                  <label className={styles.toggleRow}>
-                    <span>High Contrast Mode</span>
-
-                    <input type="checkbox" checked={highContrast} onChange={() => setHighContrast(!highContrast)}/>
-                  </label>
-
-                  <label className={styles.toggleRow}>
-                    <span>Reduced Motion</span>
-
-                    <input type="checkbox" checked={reducedMotion} onChange={() => setReducedMotion(!reducedMotion)}/>
-                  </label>
-                </div>
-
-                <div className={styles.settingsCard}>
-                  <h3>Notifications</h3>
-
-                  <label className={styles.toggleRow}>
-                    <span>Event Reminders</span>
-
-                    <input type="checkbox" checked={eventReminders} onChange={() => setEventReminders(!eventReminders)}/>
-                  </label>
-
-                  <label className={styles.toggleRow}>
-                    <span>Society Alerts</span>
-
-                    <input type="checkbox" checked={societyAlerts} onChange={() => setSocietyAlerts(!societyAlerts)}/>
-                  </label>
-
-                  <label className={styles.toggleRow}>
-                    <span>Helpdesk Updates</span>
-
-                    <input type="checkbox" checked={helpdeskUpdates} onChange={() => setHelpdeskUpdates(!helpdeskUpdates)}/>
-                  </label>
-                </div>
-
-                <div className={styles.settingsCard}>
-                  <h3>App Preferences</h3>
-
-                  <label className={styles.selectGroup}>
-                    <span>Default Page</span>
-
-                    <select value={defaultPage} onChange={(e) => setDefaultPage(e.target.value as DefaultPage)} className={styles.selectInput}>
-
-                      <option>Campus Map</option>
-                      <option>Timetable</option>
-                      <option>Societies</option>
-                      <option>Helpdesk</option>
-                    
-                    </select>
-                  </label>
-
-                  {loadingSettings && (<p className={styles.statusMessage}>Loading saved settings...</p>)}
-
-                  {saveMessage && (<p className={styles.statusMessage} role="status">{saveMessage}</p>)}
-                  
-                  <div className={styles.buttonRow}>
-                    
-                    <button type="button" className={styles.saveButton} onClick={handleSaveSettings} disabled={savingSettings}>{savingSettings ? "Saving..." : "Save Settings"}</button>
-
-                    <button type="button" className={styles.restoreButton} onClick={handleRestoreDefaults} disabled={savingSettings}>Restore Defaults</button>
-
-                  </div>
-                </div>
-              </div>
-            </section>
-
-    
-        </div>
-        </main>
-    </>
+        </section>
+      </div>
+    </main>
   );
 }
