@@ -130,10 +130,7 @@
     opacity: 0;
     visibility: hidden;
     
-    transition:
-        transform 0.35s ease,
-        opacity 0.35s ease,
-        visibility 0s linear 0.35s;
+    transition: transform 0.35s ease, opacity 0.35s ease, visibility 0s linear 0.35s;
     pointer-events: none;
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
 
@@ -147,10 +144,7 @@
     opacity: 1;
     visibility: visible;
 
-    transition:
-        transform 0.35s ease,
-        opacity 0.35s ease,
-        visibility 0s;
+    transition: transform 0.35s ease, opacity 0.35s ease, visibility 0s;
     pointer-events: auto;
 }
 
@@ -201,7 +195,7 @@
 }
 
 .sideMenuLinkSettings {
-    margin-top: 450px;
+    margin-top: auto;
 }
 
 .sideMenuLink:hover,
