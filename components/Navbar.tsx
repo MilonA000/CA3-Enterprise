@@ -3,14 +3,8 @@
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { supabase } from "@/lib/supabase"
 import styles from "./Navbar.module.css"
-
-type CampusUser = {
-  studentId: string
-  name: string
-  course: string
-  loggedIn: boolean
-}
 
 export default function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -18,58 +12,78 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    const loadUser = () => {
-      const storedUser = localStorage.getItem("campusUser")
+    const loadUser = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession()
 
-      if (!storedUser) {
+      if (!session) {
         setIsLoggedIn(false)
         setUserName("Account")
         return
       }
 
-      try {
-        const parsedUser: CampusUser = JSON.parse(storedUser)
-
-        if (parsedUser.loggedIn) {
-          setIsLoggedIn(true)
-          setUserName(parsedUser.name || "Account")
-        } else {
-          setIsLoggedIn(false)
-          setUserName("Account")
-        }
-      } catch {
-        setIsLoggedIn(false)
-        setUserName("Account")
-      }
+      setIsLoggedIn(true)
+      setUserName(
+        session.user.user_metadata?.name ||
+          session.user.email ||
+          "Account"
+      )
     }
 
     loadUser()
-    window.addEventListener("storage", loadUser)
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (!session) {
+        setIsLoggedIn(false)
+        setUserName("Account")
+        return
+      }
+
+      setIsLoggedIn(true)
+      setUserName(
+        session.user.user_metadata?.name ||
+          session.user.email ||
+          "Account"
+      )
+    })
 
     return () => {
-      window.removeEventListener("storage", loadUser)
+      subscription.unsubscribe()
     }
   }, [])
 
+  const handleSignOut = async () => {
+    await supabase.auth.signOut()
+    setIsLoggedIn(false)
+    setUserName("Account")
+    setMenuOpen(false)
+  }
+
   return (
     <nav className={styles.navbar}>
-      
+
       <button type="button" className={styles.menuToggle} onClick={() => setMenuOpen(true)} aria-label="Open menu">☰</button>
 
       <div className={styles.navbarButton}>
 
         <Link href="/" className={styles.navHomeBtn}>Home</Link>
 
-        <Link href="/contact" className={styles.navEventsBtn}>Contact Us</Link>
+        <Link href="/helpdesk" className={styles.navEventsBtn}>Help</Link>
 
         {isLoggedIn ? (
+          
+          <>
 
-          <Link href="/settings" className={styles.navSignInBtn}>{userName}<Image
-              src="/user-icon.png"
-              alt="User icon"
-              width={24}
-              height={24}/>
-          </Link>
+            <Link href="/settings" className={styles.navSignInBtn}>{userName}<Image src="/user-icon.png"
+                alt="User icon"
+                width={24}
+                height={24}/>
+            </Link>
+
+          </>
 
         ) : (
 
@@ -80,6 +94,8 @@ export default function Navbar() {
               height={24}/>
           </Link>
         )}
+
+        
       </div>
 
       <div className={`${styles.sideMenu} ${menuOpen ? styles.open : ""}`}>
@@ -90,17 +106,23 @@ export default function Navbar() {
 
         <Link href="/timetable" className={styles.sideMenuLink} onClick={() => setMenuOpen(false)}>Timetables</Link>
 
-        <Link href="/contact" className={styles.sideMenuLink} onClick={() => setMenuOpen(false)}>Contact Us</Link>
+        <Link href="/helpdesk" className={styles.sideMenuLink} onClick={() => setMenuOpen(false)}>Help</Link>
 
         {isLoggedIn ? (
+          
+          <>
 
-          <Link href="/settings" className={styles.sideMenuLink} onClick={() => setMenuOpen(false)}>{userName}<Image className={styles.signInImage2}
-              src="/user-icon.png"
-              alt="User icon"
-              width={24}
-              height={24}/>
+          <Link href="/settings" className={styles.sideMenuLink} onClick={() => setMenuOpen(false)}>
+
+              {userName}<Image className={styles.signInImage2} src="/user-icon.png" alt="User icon" width={24} height={24}/>
           </Link>
 
+          <Link href="/saved" className={styles.sideMenuLink} onClick={() => setMenuOpen(false)}>Saved Events</Link>
+
+          <Link href="/saved-societies" className={styles.sideMenuLink} onClick={() => setMenuOpen(false)}>Saved Societies</Link>
+
+          </>
+        
         ) : (
 
           <Link href="/login" className={styles.sideMenuLink} onClick={() => setMenuOpen(false)}>Sign In<Image className={styles.signInImage2}
@@ -109,6 +131,7 @@ export default function Navbar() {
               width={24}
               height={24}/>
           </Link>
+
         )}
 
         <Link href="/settings" className={styles.sideMenuLinkSettings} onClick={() => setMenuOpen(false)}>Settings<Image className={styles.settingsImage}
@@ -119,7 +142,10 @@ export default function Navbar() {
         </Link>
       </div>
 
-      {menuOpen && (<div className={styles.pageOverlay} onClick={() => setMenuOpen(false)} aria-hidden="true"/>)}
+      {menuOpen && (<div className={styles.pageOverlay} onClick={() => setMenuOpen(false)} aria-hidden="true"/>
+      
+      )}
+    
     </nav>
   )
 }
