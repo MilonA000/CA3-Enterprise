@@ -66,7 +66,7 @@
 .contentLayer {
     position: fixed;
     left: 453.69px;
-    top: 90px;
+    top: 70px;
 
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.93), rgba(238, 247, 250, 0.88));
     border-bottom: 2px solid rgba(188, 105, 132, 0.55);
@@ -157,9 +157,9 @@
 }
 
 .toggleRow input[type="checkbox"]:focus-visible {
-  outline: 3px solid rgba(33, 164, 207, 0.35);
-  outline-offset: 2px;
-  border-radius: 4px;
+    outline: 3px solid rgba(33, 164, 207, 0.35);
+    outline-offset: 2px;
+    border-radius: 4px;
 }
 
 .selectGroup {
@@ -191,14 +191,8 @@
     -webkit-appearance: none;
     -moz-appearance: none;
 
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.14),
-        0 8px 20px rgba(70, 20, 40, 0.12);
-    transition:
-        transform 0.16s ease,
-        box-shadow 0.16s ease,
-        border-color 0.16s ease,
-        background 0.16s ease;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 8px 20px rgba(70, 20, 40, 0.12);
+    transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease, background 0.16s ease;
 
     background-image: linear-gradient(135deg, rgba(165, 95, 115, 0.92), rgba(205, 170, 180, 0.82));
     background-repeat: no-repeat, no-repeat;
@@ -351,12 +345,25 @@
     transform: translateY(1px);
 }
 
-.statusMessage {
-    margin: 0 0 16px;
+.statusArea {
+    min-height: 60px;
+    margin-top: 12px;
+    margin-bottom: 10px;
+}
+
+.statusMessage,
+.statusMessage2 {
+    margin: 0;
     padding: 12px 14px;
     border-radius: 8px;
-
     background: rgba(255, 255, 255, 0.14);
-    color: rgb(183, 65, 65);
     font-weight: 600;
+}
+
+.statusMessage {
+    color: rgb(183, 65, 65);
+}
+
+.statusMessage2 {
+    color: rgb(73, 201, 105);
 }
