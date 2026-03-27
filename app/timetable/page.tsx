@@ -1,11 +1,11 @@
-"use client";
+"use client"
 
-import { useEffect, useMemo, useState } from "react";
-import styles from "./timetablepage.module.css";
-import Navbar from "@/components/Navbar";
-import { supabase } from "@/lib/supabase";
-import Background from "@/components/BackgroundStyles";
-import QuickLinks from "@/components/QuickLinks";
+import { useEffect, useMemo, useState } from "react"
+import styles from "./timetablepage.module.css"
+import Navbar from "@/components/Navbar"
+import { supabase } from "@/lib/supabase"
+import Background from "@/components/BackgroundStyles"
+import QuickLinks from "@/components/QuickLinks"
 
 type TimetableEntry = {
   id: string;
