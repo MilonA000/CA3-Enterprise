@@ -1,16 +1,14 @@
-"use client";
+"use client"
 
-import { useMemo, useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { useSearchParams } from "next/navigation";
-import { searchData } from "./searchData";
-import styles from "./pagesearch.module.css";
-import Navbar from "@/components/Navbar";
-import Background from "@/components/BackgroundStyles";
+import { useMemo } from "react"
+import Link from "next/link"
+import { useSearchParams } from "next/navigation"
+import { searchData } from "./searchData"
+import styles from "./pagesearch.module.css"
+import Navbar from "@/components/Navbar"
+import Background from "@/components/BackgroundStyles"
 
 export default function SearchPage() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const searchParams = useSearchParams();
 
   const rawQuery = searchParams.get("q")?.trim() ?? "";
@@ -64,9 +62,7 @@ export default function SearchPage() {
 
                 ) : query ? (
                 
-                <div className={styles.emptyBox}>
-                  No results found for <strong>{rawQuery}</strong>.
-                </div>
+                <div className={styles.emptyBox}>No results found for <strong>{rawQuery}</strong>.</div>
                 
                 ) : (
 
