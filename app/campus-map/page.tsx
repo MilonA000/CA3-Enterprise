@@ -1,11 +1,11 @@
-"use client";
+"use client"
 
-import { useMemo, useState } from "react";
-import { campusLocations } from "@/data/locations";
-import styles from "./Mappage.module.css";
+import { useMemo, useState } from "react"
+import { campusLocations } from "@/data/locations"
+import styles from "./Mappage.module.css"
 import Navbar from "@/components/Navbar"
-import Background from "@/components/BackgroundStyles";
-import QuickLinks from "@/components/QuickLinks";
+import Background from "@/components/BackgroundStyles"
+import QuickLinks from "@/components/QuickLinks"
 
 const filters = [
   "All",
