@@ -1,3 +1,5 @@
+"use client"
+
 import Navbar from "@/components/Navbar"
 import QuickLinks from "@/components/QuickLinks"
 import Background from "@/components/BackgroundStyles"
@@ -5,8 +7,13 @@ import styles from "./eventspage.module.css"
 import { getAllEvents } from "@/lib/events"
 import EventsClient from "./EventsClient"
 
-export default async function EventsPage() {
+type EventsPageProps = {
+  searchParams: Promise<{ society?: string }>;
+};
+
+export default async function EventsPage({ searchParams }: EventsPageProps) {
   const events = await getAllEvents();
+  const { society } = await searchParams;
 
   return (
     <main>
@@ -25,7 +32,7 @@ export default async function EventsPage() {
         <p className={styles.subtitle}>Discover campus events, society meetups, workshops and student activities happening this month.</p>
       </section>
 
-      <EventsClient events={events} />
+      <EventsClient events={events} societySlug={society ?? ""} />
     </main>
   );
 }
