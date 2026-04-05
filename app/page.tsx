@@ -1,15 +1,27 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import styles from "./Homepage.module.css"
 import { useRouter } from "next/navigation"
 import Navbar from "../components/Navbar"
 import QuickLinks from "../components/QuickLinks"
 import Background from "../components/BackgroundStyles"
+import Recommendations from "../components/Recommendations"
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("")
   const router = useRouter()
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  useEffect(() => {
+    const user = localStorage.getItem("campusUser")
+    setIsLoggedIn(!!user)
+  }, [])
+
+  const handleSearch = () => {
+    if (!searchQuery.trim()) return
+    router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`)
+    }
 
   const handleSearch = () => {
     if (!searchQuery.trim()) return
@@ -50,6 +62,8 @@ export default function Home() {
             </div>
 
           </div>
+
+          {isLoggedIn && <Recommendations />}
 
         </main>
     </>

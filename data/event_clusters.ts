@@ -1,0 +1,17 @@
+export const eventClusters = [
+  { id: 1, title: "Tech Talk on AI", cluster: 2 },
+  { id: 2, title: "Music Concert", cluster: 1 },
+  { id: 3, title: "Sports Tournament", cluster: 1 },
+  { id: 4, title: "Art Exhibition", cluster: 1 },
+  { id: 5, title: "Coding Workshop", cluster: 1 },
+  { id: 6, title: "Debate Competition", cluster: 0 },
+  { id: 7, title: "Dance Performance", cluster: 1 },
+  { id: 8, title: "Science Fair", cluster: 1 },
+  { id: 9, title: "Film Screening", cluster: 1 },
+  { id: 10, title: "Book Club Meeting", cluster: 3 },
+  { id: 11, title: "Photography Workshop", cluster: 2 },
+  { id: 12, title: "Environmental Seminar", cluster: 1 },
+  { id: 13, title: "Cooking Class", cluster: 2 },
+  { id: 14, title: "Yoga Session", cluster: 1 },
+  { id: 15, title: "Business Pitch", cluster: 1 },
+];
