@@ -55,13 +55,6 @@ export default function Navbar() {
     }
   }, [])
 
-  const handleSignOut = async () => {
-    await supabase.auth.signOut()
-    setIsLoggedIn(false)
-    setUserName("Account")
-    setMenuOpen(false)
-  }
-
   return (
     <nav className={styles.navbar}>
 

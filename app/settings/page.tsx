@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useRouter } from "next/navigation"
 import styles from "./settingspage.module.css"
 import Navbar from "@/components/Navbar"
@@ -57,6 +57,24 @@ const DEFAULT_SETTINGS: LocalSettings = {
 
 const LOCAL_SETTINGS_KEY = "campusSettings";
 
+function getInitialLocalSettings(): LocalSettings {
+  if (typeof window === "undefined") {
+    return DEFAULT_SETTINGS;
+  }
+
+  const storedSettings = localStorage.getItem(LOCAL_SETTINGS_KEY);
+  if (!storedSettings) {
+    return DEFAULT_SETTINGS;
+  }
+
+  try {
+    return JSON.parse(storedSettings) as LocalSettings;
+  } catch {
+    console.error("Could not parse saved local settings.");
+    return DEFAULT_SETTINGS;
+  }
+}
+
 function applySettingsToDocument(settings: {
   largeText: boolean;
   highContrast: boolean;
@@ -86,43 +104,22 @@ function getRouteForDefaultPage(defaultPage: DefaultPage) {
 
 export default function SettingsPage() {
   const router = useRouter();
+  const initialSettingsRef = useRef<LocalSettings>(getInitialLocalSettings());
 
-  const [largeText, setLargeText] = useState(false);
-  const [highContrast, setHighContrast] = useState(false);
-  const [reducedMotion, setReducedMotion] = useState(false);
+  const [largeText, setLargeText] = useState(initialSettings.largeText);
+  const [highContrast, setHighContrast] = useState(initialSettings.highContrast);
+  const [reducedMotion, setReducedMotion] = useState(initialSettings.reducedMotion);
 
-  const [eventReminders, setEventReminders] = useState(true);
-  const [societyAlerts, setSocietyAlerts] = useState(true);
-  const [helpdeskUpdates, setHelpdeskUpdates] = useState(false);
+  const [eventReminders, setEventReminders] = useState(initialSettingsRef.current.eventReminders);
+  const [societyAlerts, setSocietyAlerts] = useState(initialSettingsRef.current.societyAlerts);
+  const [helpdeskUpdates, setHelpdeskUpdates] = useState(initialSettingsRef.current.helpdeskUpdates);
 
-  const [defaultPage, setDefaultPage] = useState<DefaultPage>("Campus Map");
+  const [defaultPage, setDefaultPage] = useState<DefaultPage>(initialSettingsRef.current.defaultPage);
   const [user, setUser] = useState<User | null>(null);
 
   const [loadingSettings, setLoadingSettings] = useState(false);
   const [savingSettings, setSavingSettings] = useState(false);
   const [saveMessage, setSaveMessage] = useState("");
-
-  useEffect(() => {
-    const storedSettings = localStorage.getItem(LOCAL_SETTINGS_KEY);
-
-    if (!storedSettings) return;
-
-    try {
-      const parsedSettings: LocalSettings = JSON.parse(storedSettings);
-
-      setLargeText(parsedSettings.largeText);
-      setHighContrast(parsedSettings.highContrast);
-      setReducedMotion(parsedSettings.reducedMotion);
-      setEventReminders(parsedSettings.eventReminders);
-      setSocietyAlerts(parsedSettings.societyAlerts);
-      setHelpdeskUpdates(parsedSettings.helpdeskUpdates);
-      setDefaultPage(parsedSettings.defaultPage);
-
-      applySettingsToDocument(parsedSettings);
-    } catch {
-      console.error("Could not parse saved local settings.");
-    }
-  }, []);
 
   useEffect(() => {
     applySettingsToDocument({ largeText, highContrast, reducedMotion });

@@ -34,3 +34,14 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Attendance ML Feature
+
+The events page includes a small, explainable machine learning feature to estimate expected attendance.
+
+- **Prediction target:** expected attendee count for upcoming events, displayed as a band (`Low`, `Medium`, `High`).
+- **Features used:** hour of day, day of week, weekend flag, featured flag, food provided flag, category score.
+- **Model:** lightweight linear regression (implemented in-app, no heavy ML framework).  
+  This model is explainable because each feature contributes additively to the final prediction.
+- **Fictional training data:** generated from real event records in the database by creating 12 historical weekly observations per event with deterministic seasonality and noise.
+- **Evaluation:** an 80/20 train/test split is used; the UI shows mean absolute error (MAE) and test band accuracy.

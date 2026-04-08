@@ -1,5 +1,3 @@
-"use client"
-
 import { notFound, redirect } from "next/navigation"
 import Link from "next/link"
 import { revalidatePath } from "next/cache"

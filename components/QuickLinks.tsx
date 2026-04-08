@@ -15,7 +15,7 @@ export default function QuickLinks() {
                 <Link href="/timetable" className={styles.QuickLinksLink1}>Timetables<Image className={styles.TimetableImage1}
                     src="/timetable-logo.png"
                     alt="Timetable logo"
-                    width={24}
+                    width={38}
                     height={24}/>
                 </Link>
 

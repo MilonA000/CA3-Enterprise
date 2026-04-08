@@ -4,6 +4,7 @@ import { useMemo, useState } from "react"
 import Link from "next/link"
 import styles from "./eventspage.module.css"
 import type { EventItem } from "@/lib/events"
+import type { AttendanceBand, AttendanceModelSummary } from "@/lib/attendance-ml"
 
 const categories = [
   "All",
@@ -16,13 +17,18 @@ const categories = [
 ];
 
 type Props = {
-  events: EventItem[];
+  events: (EventItem & {
+    predictedAttendance: number | null;
+    predictedBand: AttendanceBand | null;
+  })[];
   societySlug?: string;
+  modelSummary: AttendanceModelSummary;
 };
 
 export default function EventsClient({
   events,
   societySlug = "",
+  modelSummary,
 }: Props) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -72,6 +78,17 @@ export default function EventsClient({
       
       </section>
 
+      <section className={styles.resultsCount} aria-label="Attendance model summary">
+        <strong>Expected attendance model:</strong> {modelSummary.modelChoiceExplanation}{" "}
+        Features: {modelSummary.featuresUsed.join(", ")}. Evaluation on fictional history
+        (train/test split {modelSummary.trainSize}/{modelSummary.testSize}): MAE{" "}
+        {modelSummary.meanAbsoluteError}, band accuracy {modelSummary.testBandAccuracy}%.
+      </section>
+
+      <section className={styles.resultsCount} aria-label="Data generation details">
+        <strong>Data:</strong> {modelSummary.generatedDataDescription}
+      </section>
+
       <div className={styles.resultsCount} aria-live="polite">Showing {filteredEvents.length}{" "}{filteredEvents.length === 1 ? "event" : "events"}</div>
 
       {filteredEvents.length > 0 ? (
@@ -115,6 +132,13 @@ export default function EventsClient({
                 <span className={styles.tag}>{event.category}</span>
                 
                 <span className={styles.tag}>{event.society}</span>
+
+                {event.predictedBand && (
+                  <span className={styles.tag}>
+                    Expected attendance: {event.predictedBand}
+                    {event.predictedAttendance ? ` (${event.predictedAttendance})` : ""}
+                  </span>
+                )}
               
               </div>
 
