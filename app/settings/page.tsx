@@ -106,9 +106,9 @@ export default function SettingsPage() {
   const router = useRouter();
   const initialSettingsRef = useRef<LocalSettings>(getInitialLocalSettings());
 
-  const [largeText, setLargeText] = useState(initialSettings.largeText);
-  const [highContrast, setHighContrast] = useState(initialSettings.highContrast);
-  const [reducedMotion, setReducedMotion] = useState(initialSettings.reducedMotion);
+  const [largeText, setLargeText] = useState(initialSettingsRef.currentinitialSettings.largeText);
+  const [highContrast, setHighContrast] = useState(initialSettingsRef.highContrast);
+  const [reducedMotion, setReducedMotion] = useState(initialSettingsRef.reducedMotion);
 
   const [eventReminders, setEventReminders] = useState(initialSettingsRef.current.eventReminders);
   const [societyAlerts, setSocietyAlerts] = useState(initialSettingsRef.current.societyAlerts);
