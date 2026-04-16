@@ -91,7 +91,7 @@
     border: none;
     color: white;
 
-    font-size: 32px;
+    font-size: 28px;
     font-weight: bold;
     cursor: pointer;
 
@@ -239,6 +239,7 @@
     width: 30px;
     height: 30px;
     object-fit: contain;
+    
     margin-left: 15px;
     margin-bottom: 10px;
 }
