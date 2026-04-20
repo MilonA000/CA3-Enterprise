@@ -3,6 +3,7 @@ import QuickLinks from "@/components/QuickLinks"
 import Background from "@/components/BackgroundStyles"
 import styles from "./eventspage.module.css"
 import { getAllEvents } from "@/lib/events"
+import { buildAttendancePredictions } from "@/lib/attendance-ml"
 import EventsClient from "./EventsClient"
 
 type EventsPageProps = {
@@ -11,6 +12,13 @@ type EventsPageProps = {
 
 export default async function EventsPage({ searchParams }: EventsPageProps) {
   const events = await getAllEvents();
+  const { predictions, summary } = buildAttendancePredictions(events);
+  const predictionByEventId = new Map(predictions.map((entry) => [entry.eventId, entry]));
+  const eventsWithPredictions = events.map((event) => ({
+    ...event,
+    predictedAttendance: predictionByEventId.get(event.id)?.predictedAttendance ?? null,
+    predictedBand: predictionByEventId.get(event.id)?.predictedBand ?? null,
+  }));
   const { society } = await searchParams;
 
   return (
@@ -30,7 +38,11 @@ export default async function EventsPage({ searchParams }: EventsPageProps) {
         <p className={styles.subtitle}>Discover campus events, society meetups, workshops and student activities happening this month.</p>
       </section>
 
-      <EventsClient events={events} societySlug={society ?? ""} />
+      <EventsClient
+        events={eventsWithPredictions}
+        societySlug={society ?? ""}
+        modelSummary={summary}
+      />
     </main>
   );
 }
