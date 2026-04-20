@@ -1,0 +1,527 @@
+:root {
+    --left-w: clamp(220px, 20vw, 320px);
+    --right-w: clamp(220px, 20vw, 320px);
+    --side-gap: clamp(16px, 2vw, 28px);
+
+    --page-pad: clamp(16px, 3vw, 46px);
+    --top-offset: clamp(96px, 10vh, 136px);
+}
+
+.settingsPage {
+    --left-w: clamp(220px, 20vw, 320px);
+    --right-w: clamp(220px, 20vw, 320px);
+    --side-gap: clamp(16px, 2vw, 28px);
+
+    --page-pad: clamp(16px, 3vw, 46px);
+    --top-offset: clamp(96px, 10vh, 136px);
+    position: relative;
+
+    min-height: 100vh;
+    padding-bottom: 32px;
+}
+
+.AccountInfoCard {
+    position: fixed;
+    left: var(--page-pad);
+    top: var(--top-offset);
+
+    width: var(--left-w);
+    z-index: 20;
+    background: linear-gradient(135deg, rgba(10, 92, 126, 0.9), rgba(33, 164, 207, 0.82));
+
+    border-radius: 15px;
+    border: 1px solid rgba(165, 95, 115, 0.7);
+    padding: clamp(18px, 2vw, 26px);
+
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 84% 100%, 0 100%);
+    box-sizing: border-box;
+}
+
+.AccountInfoContent {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+}
+
+.AccountInfoContent h2 {
+    margin: 0 0 10px;
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    line-height: 1;
+
+    font-weight: 800;
+    color: white;
+    padding-bottom: 3px;
+}
+
+.AccountInfoContent p {
+    margin: 0 0 28px;
+    font-size: clamp(0.95rem, 1.1vw, 1rem);
+    color: white;
+    line-height: 1.45;
+}
+
+.secondaryButton {
+    color: white;
+    margin-top: 15px;
+    margin-left: auto;
+
+    margin-right: auto;
+    display: block;
+    width: min(200px, 100%);
+
+    min-height: 48px;
+    font-size: clamp(16px, 1.2vw, 18px);
+    border: 1px solid rgb(72, 72, 72);
+
+    background: linear-gradient(135deg, rgba(7, 57, 79, 0.92), rgba(58, 161, 196, 0.92));
+    padding: 10px;
+    border-radius: 7.6px;
+
+    cursor: pointer;
+    box-shadow: inset 0 2px 4px rgba(40, 8, 22, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 4px 12px rgba(70, 20, 40, 0.2);
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 85% 100%, 0 100%);
+
+    box-sizing: border-box;
+}
+
+.secondaryButton:hover {
+    background: linear-gradient(135deg, rgba(7, 57, 79, 0.72) 0%, rgba(58, 161, 196, 0.92) 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), inset 0 -1px 0 rgba(70, 20, 40, 0.16), 0 10px 24px rgba(70, 20, 40, 0.28);
+    transform: translateY(-1px);
+    filter: saturate(1.03);
+}
+
+.secondaryButton:active {
+    transform: translateY(1px);
+    box-shadow: inset 0 2px 4px rgba(40, 8, 22, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 4px 12px rgba(70, 20, 40, 0.18);
+}
+
+.contentLayer {
+    position: fixed;
+    top: clamp(60px, 8vh, 70px);
+    left: calc(var(--page-pad) + var(--left-w) + var(--side-gap));
+
+    width: calc(100vw - (var(--page-pad) * 2) - var(--left-w) - var(--right-w) - (var(--side-gap) * 2));
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+
+    z-index: 10;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.93), rgba(238, 247, 250, 0.88));
+    border-bottom: 2px solid rgba(188, 105, 132, 0.55);
+
+    border-left: 2px solid rgba(188, 105, 132, 0.55);
+    border-top: 2px solid rgba(120, 200, 230, 0.4);
+    border-right: 2px solid rgba(120, 200, 230, 0.4);
+
+    padding: clamp(18px, 2vw, 28px);
+    clip-path: polygon(0 0, 100% 0, 100% 84%, 84% 100%, 0 100%);
+    box-sizing: border-box;
+}
+
+.settingsHero {
+    width: 100%;
+    min-height: 100px;
+    height: auto;
+}
+
+.settingsHeroContent h1 {
+    margin: 0 0 10px;
+    font-size: clamp(1.9rem, 2.8vw, 2.4rem);
+    line-height: 1.1;
+
+    font-weight: 800;
+    color: rgb(17, 42, 58);
+    padding-bottom: 3px;
+}
+
+.settingsHeroContent p {
+    margin: 0 0 0;
+    font-size: clamp(0.95rem, 1.1vw, 1rem);
+    color: rgb(17, 42, 58);
+    line-height: 1.35;
+}
+
+.settingsGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.settingsHeading {
+    font-size: clamp(1.5rem, 2.2vw, 2rem);
+    font-weight: 800;
+    color: rgb(17, 42, 58);
+
+    padding-bottom: 20px;
+    margin-top: 0;
+}
+
+.settingsCard h3 {
+    font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+    color: rgb(17, 42, 58);
+    margin-top: 6px;
+
+    font-weight: 800;
+    text-decoration: underline;
+    padding-bottom: 4px;
+}
+
+.toggleRow {
+    font-size: clamp(16px, 1.3vw, 19px);
+    margin-left: 20px;
+    margin-top: 10px;
+
+    color: rgb(17, 42, 58);
+    display: flex;
+    justify-content: space-between;
+
+    align-items: center;
+    cursor: pointer;
+    gap: 12px;
+}
+
+.toggleRow input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    margin: 0;
+
+    cursor: pointer;
+    accent-color: rgb(10, 92, 126);
+    transform: translateY(1px);
+
+    flex-shrink: 0;
+}
+
+.toggleRow input[type="checkbox"]:focus-visible {
+    outline: 3px solid rgba(33, 164, 207, 0.35);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+.selectGroup {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 10px;
+    font-size: clamp(16px, 1.3vw, 19px);
+    color: rgb(17, 42, 58);
+
+    margin-top: 10px;
+}
+
+.selectInput {
+    min-width: min(200px, 100%);
+    width: clamp(200px, 45%, 280px);
+    height: 40px;
+
+    padding: 0 48px 0 16px;
+    margin-left: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(165, 95, 115, 0.92), rgba(205, 170, 180, 0.82));
+    color: white;
+
+    font-size: clamp(1rem, 1.1vw, 1.1rem);
+    font-weight: 700;
+    line-height: 1;
+
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+
+    -moz-appearance: none;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 8px 20px rgba(70, 20, 40, 0.12);
+    transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease, background 0.16s ease;
+
+    background-image: linear-gradient(135deg, rgba(165, 95, 115, 0.92), rgba(205, 170, 180, 0.82));
+    background-repeat: no-repeat, no-repeat;
+    background-position: center, right 16px center;
+
+    background-size: cover, 14px;
+    box-sizing: border-box;
+}
+
+.selectInput:hover {
+    transform: translateY(-1px);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 10px 24px rgba(70, 20, 40, 0.18);
+}
+
+.selectInput:focus {
+    outline: none;
+    border-color: rgba(33, 164, 207, 0.9);
+    box-shadow: 0 0 0 3px rgba(33, 164, 207, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 10px 24px rgba(70, 20, 40, 0.18);
+}
+
+.selectInput option {
+    color: #1e2a30;
+    background: #f8fbfc;
+}
+
+.buttonRow {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+
+    margin-top: 18px;
+    flex-wrap: wrap;
+}
+
+.saveButton,
+.restoreButton {
+    color: white;
+    width: min(267px, 100%);
+    font-size: clamp(18px, 2vw, 25px);
+
+    padding: 15px;
+    border-radius: 7.6px;
+    cursor: pointer;
+
+    box-sizing: border-box;
+    min-height: 64px;
+}
+
+.saveButton {
+    border: none;
+    background: linear-gradient(90deg, rgba(112, 48, 70, 0.98) 0%, rgba(160, 80, 108, 0.98) 50%, rgba(200, 110, 140, 0.98) 100%);
+    box-shadow: inset 0 2px 4px rgba(40, 8, 22, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 4px 12px rgba(70, 20, 40, 0.2);
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 85% 100%, 0 100%);
+}
+
+.saveButton:hover {
+    background: linear-gradient(90deg, rgba(132, 64, 90, 0.98) 0%, rgba(164, 82, 114, 0.98) 45%, rgba(197, 110, 141, 0.98) 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), inset 0 -1px 0 rgba(70, 20, 40, 0.16), 0 10px 24px rgba(70, 20, 40, 0.28);
+    transform: translateY(-1px);
+    filter: saturate(1.03);
+}
+
+.saveButton:active {
+    transform: translateY(1px);
+    box-shadow: inset 0 2px 4px rgba(40, 8, 22, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 4px 12px rgba(70, 20, 40, 0.18);
+}
+
+.restoreButton {
+    border: none;
+    background: linear-gradient(135deg, rgba(7, 57, 79, 0.92), rgba(58, 161, 196, 0.92));
+    box-shadow: inset 0 2px 4px rgba(40, 8, 22, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 4px 12px rgba(70, 20, 40, 0.2);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%, 0 75%);
+}
+
+.restoreButton:hover {
+    background: linear-gradient(135deg, rgba(7, 57, 79, 0.72) 0%, rgba(58, 161, 196, 0.92) 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), inset 0 -1px 0 rgba(70, 20, 40, 0.16), 0 10px 24px rgba(70, 20, 40, 0.28);
+    transform: translateY(-1px);
+    filter: saturate(1.03);
+}
+
+.restoreButton:active {
+    transform: translateY(1px);
+    box-shadow: inset 0 2px 4px rgba(40, 8, 22, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 4px 12px rgba(70, 20, 40, 0.18);
+}
+
+.summaryCard {
+    position: fixed;
+    top: var(--top-offset);
+    right: var(--page-pad);
+
+    width: var(--right-w);
+    z-index: 20;
+    background: linear-gradient(90deg, rgba(133, 58, 84, 0.78), rgba(160, 80, 108, 0.78), rgba(200, 110, 140, 0.78));
+
+    border-radius: 15px;
+    border: 1px solid rgba(165, 95, 115, 0.7);
+    padding: clamp(18px, 2vw, 26px);
+
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 84% 100%, 0 100%);
+    height: auto;
+    backdrop-filter: blur(6px);
+
+    box-sizing: border-box;
+}
+
+.summaryCardContent {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+}
+
+.summaryTitle {
+    font-size: clamp(1.3rem, 1.8vw, 1.5rem);
+    color: white;
+    margin: 0;
+
+    font-weight: 800;
+    text-decoration: underline;
+    padding-bottom: 4px;
+}
+
+.summaryCard p {
+    margin-top: 25px;
+    color: white;
+    font-size: clamp(14px, 1vw, 15px);
+    line-height: 1.35;
+}
+
+.quickLinks {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    gap: 12px;
+    margin-left: 0;
+    margin-top: 21px;
+
+    text-decoration: underline;
+    font-size: 12px;
+    color: rgba(2, 17, 21, 0.5);
+}
+
+.quickLinks button:hover {
+    cursor: pointer;
+    box-shadow: none;
+    transform: translateY(-1px);
+
+    filter: saturate(1.03);
+    background: transparent;
+}
+
+.quickLinks button:active {
+    transform: translateY(1px);
+}
+
+.statusArea {
+    min-height: 60px;
+    margin-top: 12px;
+    margin-bottom: 10px;
+}
+
+.statusMessage,
+.statusMessage2 {
+    margin: 0;
+    padding: 12px 14px;
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, 0.14);
+    font-weight: 600;
+}
+
+.statusMessage {
+    color: rgb(183, 65, 65);
+}
+
+.statusMessage2 {
+    color: rgb(73, 201, 105);
+}
+
+@media (max-width: 1400px) {
+    .settingsPage {
+        --left-w: 250px;
+        --right-w: 250px;
+        --page-pad: 20px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .settingsPage {
+        --left-w: 220px;
+        --right-w: 220px;
+        --page-pad: 16px;
+        --side-gap: 16px;
+    }
+
+    .summaryCard {
+        top: auto;
+        bottom: 20px;
+    }
+
+    .settingsHero {
+        min-height: auto;
+    }
+
+    .quickLinks {
+        gap: 8px;
+    }
+}
+
+@media (max-width: 992px) {
+    .settingsPage {
+        padding-top: 110px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .AccountInfoCard,
+    .summaryCard,
+    .contentLayer {
+        position: static;
+        width: 100%;
+        max-height: none;
+
+        overflow-y: visible;
+        margin: 0 0 20px 0;
+    }
+
+    .contentLayer {
+        left: auto;
+        top: auto;
+    }
+
+    .summaryCard {
+        bottom: auto;
+    }
+
+    .settingsHeading {
+        margin-top: 0;
+    }
+
+    .selectGroup {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .selectInput {
+        margin-left: 0;
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .toggleRow {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .settingsPage {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .AccountInfoContent h2,
+    .settingsHeroContent h1,
+    .settingsHeading,
+    .settingsCard h3,
+    .summaryTitle {
+        overflow-wrap: break-word;
+    }
+
+    .toggleRow {
+        font-size: 16px;
+    }
+
+    .buttonRow {
+        gap: 12px;
+    }
+
+    .saveButton,
+    .restoreButton,
+    .secondaryButton {
+        width: 100%;
+        max-width: none;
+    }
+
+    .quickLinks {
+        font-size: 11px;
+    }
+}
