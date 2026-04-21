@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo } from "react"
+import { useMemo, Suspense } from "react"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { searchData } from "./searchData"
@@ -32,6 +32,7 @@ export default function SearchPage() {
   }, [query]);
 
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <>
         <main>
           
@@ -77,5 +78,6 @@ export default function SearchPage() {
           
         </main>
     </>
+    </Suspense>
   );
 }
