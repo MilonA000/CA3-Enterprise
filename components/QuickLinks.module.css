@@ -2,41 +2,32 @@
     position: fixed;
     top: 84px;
     right: 30px;
-
     width: 260px;
     min-height: 342px;
     padding: 15px;
-
     background: linear-gradient(135deg, rgba(10, 92, 126, 0.9), rgba(33, 164, 207, 0.82));
     border: 1px solid rgba(120, 200, 230, 0.42);
     box-shadow: 0 12px 28px rgba(19, 59, 74, 0.14);
-
     clip-path: polygon(0 0, 100% 0, 100% 100%, 14% 100%, 0 76%);
     z-index: 10;
     overflow: hidden;
-
     isolation: isolate;
 }
-
 .QuickLinksContent {
     display: flex;
     flex-direction: column;
     gap: 24px;
 }
-
 .QuickLinksContent h3 {
     margin: 0 0 4px 15px;
     max-width: 220px;
     color: white;
-
     font-family: "Poppins", "Montserrat", sans-serif;
     font-size: 1.9rem;
     font-weight: bold;
-
     line-height: 1.1;
     letter-spacing: -0.02em;
 }
-
 .QuickLinksLink1,
 .QuickLinksLink2,
 .QuickLinksLink3,
@@ -46,16 +37,13 @@
     display: flex;
     align-items: center;
     gap: 8px;
-
     margin-left: 55px;
     color: white;
     font-size: 17px;
-
     font-weight: 600;
     text-decoration: none;
     transition: opacity 0.2s ease, transform 0.2s ease;
 }
-
 .QuickLinksLink1:hover,
 .QuickLinksLink2:hover,
 .QuickLinksLink3:hover,
@@ -65,7 +53,6 @@
     opacity: 0.8;
     transform: translateX(5px);
 }
-
 .TimetableImage1,
 .SocialImage1,
 .EventImage1,
@@ -75,17 +62,14 @@
     width: 20px;
     height: 20px;
     object-fit: contain;
-
     display: block;
     flex-shrink: 0;
 }
-
 .TimetableImage1,
 .FoodImage1 {
     width: 38px !important;
     height: 24px !important;
 }
-
 .SocialImage1,
 .EventImage1 {
     width: 30px !important;
@@ -99,22 +83,20 @@
         width: 100%;
         clip-path: none;
         margin-top: 20px;
+        padding-top: 70px;
     }
-
     .QuickLinksContent {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
         gap: 12px;
     }
-
     .QuickLinksContent h3 {
         width: 100%;
         text-align: center;
         margin: 0 0 8px 0;
         font-size: 1.4rem;
     }
-
     .QuickLinksLink1,
     .QuickLinksLink2,
     .QuickLinksLink3,
