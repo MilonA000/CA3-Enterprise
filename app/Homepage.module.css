@@ -261,3 +261,31 @@
         margin-right: 4px;
     }
 }
+@media (max-width: 768px) {
+    .PopoutShell {
+        padding-top: 70px;
+    }
+
+    .Popout1Content h2 {
+        font-size: 1.3rem;
+    }
+
+    .Popout1 p {
+        font-size: 0.9rem;
+    }
+
+    .SearchHeader {
+        font-size: 1.3rem;
+    }
+
+    .searchContainer2 input {
+        height: 48px;
+        font-size: 1rem;
+    }
+
+    .searchContainer2 button {
+        height: 48px;
+        font-size: 1rem;
+        flex: 0 0 120px;
+    }
+}
