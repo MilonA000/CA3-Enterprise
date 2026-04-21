@@ -190,7 +190,7 @@
 
         flex-direction: column;
         gap: 18px;
-        padding: 18px 14px 28px;
+        padding: 70px 14px 28px;
     }
 
     .Popout1,
@@ -224,7 +224,7 @@
 
 @media (max-width: 600px) {
     .PopoutShell {
-        padding: 14px 12px 24px;
+        padding: 70px 12px 24px;
         gap: 14px;
     }
 
@@ -241,6 +241,7 @@
     .SearchHeader {
         margin-left: 4px;
         margin-right: 4px;
+        font-size: 1.3rem;
     }
 
     .searchContainer2 {
@@ -250,20 +251,18 @@
         margin-right: 4px;
     }
 
-    .searchContainer2 input,
+    .searchContainer2 input {
+        width: 100%;
+        flex: 0 0 auto;
+        height: 48px;
+        font-size: 1rem;
+    }
+
     .searchContainer2 button {
         width: 100%;
         flex: 0 0 auto;
-    }
-
-    .SearchContainerP {
-        margin-left: 4px;
-        margin-right: 4px;
-    }
-}
-@media (max-width: 768px) {
-    .PopoutShell {
-        padding-top: 70px;
+        height: 48px;
+        font-size: 1rem;
     }
 
     .Popout1Content h2 {
@@ -274,18 +273,8 @@
         font-size: 0.9rem;
     }
 
-    .SearchHeader {
-        font-size: 1.3rem;
-    }
-
-    .searchContainer2 input {
-        height: 48px;
-        font-size: 1rem;
-    }
-
-    .searchContainer2 button {
-        height: 48px;
-        font-size: 1rem;
-        flex: 0 0 120px;
+    .SearchContainerP {
+        margin-left: 4px;
+        margin-right: 4px;
     }
 }
