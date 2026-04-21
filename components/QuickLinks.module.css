@@ -93,6 +93,38 @@
 }
 @media (max-width: 768px) {
     .QuickLinks {
-        display: none;
+        position: relative;
+        top: auto;
+        right: auto;
+        width: 100%;
+        clip-path: none;
+        margin-top: 20px;
+    }
+
+    .QuickLinksContent {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .QuickLinksContent h3 {
+        width: 100%;
+        text-align: center;
+        margin: 0 0 8px 0;
+        font-size: 1.4rem;
+    }
+
+    .QuickLinksLink1,
+    .QuickLinksLink2,
+    .QuickLinksLink3,
+    .QuickLinksLink4,
+    .QuickLinksLink5,
+    .QuickLinksLink6 {
+        margin-left: 0;
+        padding: 10px 16px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 8px;
+        font-size: 15px;
     }
 }
