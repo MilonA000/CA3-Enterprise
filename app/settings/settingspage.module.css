@@ -1,0 +1,416 @@
+.settingsPage,
+.settingsPage *,
+.settingsPage *::before,
+.settingsPage *::after {
+    box-sizing: border-box;
+}
+
+.settingsPage {
+    --left-w: clamp(220px, 20vw, 320px);
+    --right-w: clamp(220px, 20vw, 320px);
+    --side-gap: clamp(16px, 2vw, 28px);
+
+    --page-pad: clamp(16px, 3vw, 46px);
+    --top-offset: clamp(96px, 10vh, 136px);
+    position: relative;
+
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+    
+    padding-bottom: 32px;
+}
+
+.AccountInfoCard {
+    position: fixed;
+    left: var(--page-pad);
+    top: var(--top-offset);
+
+    width: var(--left-w);
+    z-index: 20;
+    background: linear-gradient(35deg, rgba(30, 149, 188, 0.9), rgba(162, 220, 239, 0.72));
+
+    border-radius: 15px;
+    border: 1px solid rgba(165, 95, 115, 0.7);
+    padding: clamp(18px, 2vw, 26px);
+
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 84% 100%, 0 100%);
+}
+
+.AccountInfoContent,
+.summaryCardContent {
+    width: 100%;
+}
+
+.AccountInfoContent h2 {
+    margin: 0 0 10px;
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    line-height: 1;
+
+    font-weight: 800;
+    color: white;
+}
+
+.AccountInfoContent p {
+    margin: 0 0 28px;
+    font-size: clamp(0.95rem, 1.1vw, 1rem);
+    color: white;
+
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+}
+
+.secondaryButton {
+    color: white;
+    margin: 15px auto 0;
+    display: block;
+
+    width: min(200px, 100%);
+    min-height: 48px;
+    font-size: clamp(16px, 1.2vw, 18px);
+
+    border: 0.2px dotted black;
+    background: linear-gradient(35deg, rgba(21, 115, 146, 0.9), rgba(143, 221, 247, 0.62));
+    padding: 10px;
+
+    border-radius: 7.6px;
+    cursor: pointer;
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 85% 100%, 0 100%);
+}
+
+.contentLayer {
+    position: fixed;
+    top: clamp(60px, 8vh, 70px);
+    left: calc(var(--page-pad) + var(--left-w) + var(--side-gap));
+
+    width: calc(100vw - (var(--page-pad) * 2) - var(--left-w) - var(--right-w) - (var(--side-gap) * 2));
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+
+    z-index: 10;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.93), rgba(238, 247, 250, 0.88));
+    border-bottom: 2px solid rgba(188, 105, 132, 0.55);
+
+    border-left: 2px solid rgba(188, 105, 132, 0.55);
+    border-top: 2px solid rgba(120, 200, 230, 0.4);
+    border-right: 2px solid rgba(120, 200, 230, 0.4);
+
+    padding: clamp(18px, 2vw, 28px);
+    clip-path: polygon(0 0, 100% 0, 100% 84%, 84% 100%, 0 100%);
+}
+
+.settingsHero {
+    width: 100%;
+}
+
+.settingsHeroContent h1 {
+    margin: 0 0 10px;
+    font-size: clamp(1.9rem, 2.8vw, 2.4rem);
+    line-height: 1.1;
+
+    font-weight: 800;
+    color: rgb(17, 42, 58);
+    overflow-wrap: anywhere;
+}
+
+.settingsHeroContent p {
+    margin: 0;
+    font-size: clamp(0.95rem, 1.1vw, 1rem);
+    color: rgb(17, 42, 58);
+
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+}
+
+.settingsGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.settingsHeading {
+    font-size: clamp(1.5rem, 2.2vw, 2rem);
+    font-weight: 800;
+    color: rgb(17, 42, 58);
+
+    padding-bottom: 20px;
+    margin-top: 0;
+}
+
+.settingsCard h3 {
+    font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+    color: rgb(17, 42, 58);
+    margin-top: 6px;
+
+    font-weight: 800;
+    text-decoration: underline;
+    padding-bottom: 4px;
+}
+
+.toggleRow {
+    font-size: clamp(16px, 1.3vw, 19px);
+    margin-left: 20px;
+    margin-top: 10px;
+
+    color: rgb(17, 42, 58);
+    display: flex;
+    justify-content: space-between;
+
+    align-items: center;
+    cursor: pointer;
+    gap: 12px;
+}
+
+.toggleRow input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    margin: 0;
+
+    cursor: pointer;
+    accent-color: rgb(10, 92, 126);
+    flex-shrink: 0;
+}
+
+.selectGroup {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 10px;
+    font-size: clamp(16px, 1.3vw, 19px);
+    color: rgb(17, 42, 58);
+
+    margin-top: 10px;
+}
+
+.selectInput {
+    min-width: min(200px, 100%);
+    width: clamp(200px, 45%, 280px);
+    height: 40px;
+
+    padding: 0 48px 0 16px;
+    margin-left: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    border-radius: 8px;
+    background-image: linear-gradient(135deg, rgba(189, 31, 86, 0.7), rgba(215, 92, 135, 0.6), rgba(246, 170, 195, 0.5));
+    color: white;
+
+    font-size: clamp(1rem, 1.1vw, 1.1rem);
+    font-weight: 700;
+    cursor: pointer;
+
+    appearance: none;
+}
+
+.buttonRow {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+
+    margin-top: 18px;
+    flex-wrap: wrap;
+}
+
+.saveButton,
+.restoreButton {
+    color: white;
+    width: min(267px, 100%);
+    font-size: clamp(18px, 2vw, 25px);
+
+    padding: 15px;
+    border-radius: 7.6px;
+    cursor: pointer;
+
+    min-height: 64px;
+    border: none;
+}
+
+.saveButton {
+    background: linear-gradient(90deg, rgba(177, 53, 96, 0.8), rgba(207, 93, 133, 0.7), rgba(219, 134, 162, 0.7));
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 85% 100%, 0 100%);
+}
+
+.restoreButton {
+    background: linear-gradient(35deg, rgba(30, 149, 188, 0.9), rgba(162, 220, 239, 0.72));
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%, 0 75%);
+}
+
+.summaryCard {
+    position: fixed;
+    top: var(--top-offset);
+    right: var(--page-pad);
+
+    width: var(--right-w);
+    z-index: 20;
+    background: linear-gradient(90deg, rgba(178, 62, 103, 0.65), rgba(184, 101, 130, 0.65), rgba(210, 123, 152, 0.55));
+
+    border-radius: 15px;
+    border: 1px solid rgba(165, 95, 115, 0.7);
+    padding: clamp(18px, 2vw, 26px);
+
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 84% 100%, 0 100%);
+    backdrop-filter: blur(6px);
+}
+
+.summaryTitle {
+    font-size: clamp(1.3rem, 1.8vw, 1.5rem);
+    color: white;
+    margin: 0;
+
+    font-weight: 800;
+    text-decoration: underline;
+}
+
+.summaryCard p {
+    margin-top: 25px;
+    color: white;
+    font-size: clamp(14px, 1vw, 15px);
+
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+}
+
+.quickLinks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    margin-top: 21px;
+    text-decoration: underline;
+    font-size: 12px;
+    
+    color: rgba(2, 17, 21, 0.5);
+}
+
+.statusArea {
+    min-height: 60px;
+    margin-top: 12px;
+    margin-bottom: 10px;
+}
+
+.statusMessage,
+.statusMessage2 {
+    margin: 0;
+    padding: 12px 14px;
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, 0.14);
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.statusMessage {
+    color: rgb(183, 65, 65);
+}
+
+.statusMessage2 {
+    color: rgb(73, 201, 105);
+}
+
+button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    filter: saturate(1.03);
+}
+
+button:active {
+    opacity: 1;
+    transform: translateY(1px);
+}
+
+@media (max-width: 1400px) {
+    .settingsPage {
+        --left-w: 250px;
+        --right-w: 250px;
+        --page-pad: 20px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .settingsPage {
+        --left-w: 220px;
+        --right-w: 220px;
+        --page-pad: 16px;
+        --side-gap: 16px;
+    }
+}
+
+@media (max-width: 992px) {
+    .settingsPage {
+        padding: 110px 20px 32px;
+    }
+
+    .AccountInfoCard,
+    .summaryCard,
+    .contentLayer {
+        position: relative;
+        inset: auto;
+        width: 100%;
+
+        max-height: none;
+        overflow-y: visible;
+        margin: 0 0 20px;
+    }
+
+    .contentLayer {
+        clip-path: none;
+        border-radius: 15px;
+    }
+
+    .AccountInfoCard,
+    .summaryCard {
+        clip-path: none;
+        border-radius: 15px;
+    }
+
+    .selectGroup {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .selectInput {
+        margin-left: 0;
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .toggleRow {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .settingsPage {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .saveButton,
+    .restoreButton,
+    .secondaryButton {
+        width: 100%;
+        max-width: none;
+    }
+
+    .buttonRow {
+        gap: 12px;
+    }
+
+    .quickLinks {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 420px) {
+    .settingsPage {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .contentLayer,
+    .AccountInfoCard,
+    .summaryCard {
+        padding: 16px;
+    }
+}
