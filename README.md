@@ -18,8 +18,8 @@ npm install
 ```
 
 3. Create a `.env.local` file in the root with the following environment variables:
-NEXT_PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_ANON_KEY=
+NEXT_PUBLIC_SUPABASE_URL= https://bynwqpokqhzqulphcryc.supabase.co/
+NEXT_PUBLIC_SUPABASE_ANON_KEY= sb_publishable_k63PJ2Zmg_Gnp2hItVmFvQ_NLuqgBA-
 
 4. Run the development server:
 
