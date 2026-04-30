@@ -85,7 +85,7 @@ export default function CampusMapPage() {
                   <div className={styles.mapTopSearch}>
 
                     <input id="map-search" type="text" placeholder="Search by building, service, or category" value={query} 
-                        onChange={(e) => setQuery(e.target.value)} className={styles.mapSearchInput}/>
+                        onChange={(e) => setQuery(e.target.value)} className={styles.mapSearchInput} aria-label="Search Map"/>
 
                   </div>
 
