@@ -83,9 +83,9 @@ export default function EventActions({
 
   return (
     <>
-      <button type="button" onClick={handleSave} className={primaryClass} disabled={saved || saving}>{saved ? "Saved ✓" : saving ? "Saving..." : "Save Event"}</button>
+      <button type="button" onClick={handleSave} className={primaryClass} disabled={saved || saving} aria-label="Save Event">{saved ? "Saved ✓" : saving ? "Saving..." : "Save Event"}</button>
 
-      <button type="button" onClick={handleShare} className={secondaryClass}>Share Event</button>
+      <button type="button" onClick={handleShare} className={secondaryClass} aria-label="Share Event">Share Event</button>
     </>
   );
 }
