@@ -38,11 +38,7 @@ export default async function EventsPage({ searchParams }: EventsPageProps) {
         <p className={styles.subtitle}>Discover campus events, society meetups, workshops and student activities happening this month.</p>
       </section>
 
-      <EventsClient
-        events={eventsWithPredictions}
-        societySlug={society ?? ""}
-        modelSummary={summary}
-      />
+      <EventsClient events={eventsWithPredictions} societySlug={society ?? ""} modelSummary={summary}/>
     </main>
   );
 }
