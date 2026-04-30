@@ -56,31 +56,16 @@ export default function EventsClient({
     <>
       <section className={styles.filterPanel} aria-label="Event filters">
         <div className={styles.fieldGroup}>
-          <label htmlFor="event-search" className={styles.label}>
-            Search events
-          </label>
+          <label htmlFor="event-search" className={styles.label}>Search events</label>
 
-          <input
-            id="event-search"
-            type="text"
-            placeholder="Search by title, location, or society"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className={styles.input}
-          />
+          <input id="event-search" type="text" placeholder="Search by title, location, or society" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}
+            className={styles.input} aria-label="Filter Events"/>
         </div>
 
         <div className={styles.fieldGroup}>
-          <label htmlFor="event-category" className={styles.label}>
-            Category
-          </label>
+          <label htmlFor="event-category" className={styles.label}>Category</label>
 
-          <select
-            id="event-category"
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
-            className={styles.select}
-          >
+          <select id="event-category" value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)} className={styles.select}>
             {categories.map((category) => (
               <option key={category} value={category}>
                 {category}
@@ -93,13 +78,9 @@ export default function EventsClient({
       <section className={styles.modelCard} aria-label="Attendance model summary">
         <p className={styles.modelTitle}>Expected attendance model</p>
 
-        <p className={styles.modelText}>
-          {modelSummary.modelChoiceExplanation}
-        </p>
+        <p className={styles.modelText}>{modelSummary.modelChoiceExplanation}</p>
 
-        <p className={styles.modelText}>
-          <strong>Features:</strong> {modelSummary.featuresUsed.join(", ")}
-        </p>
+        <p className={styles.modelText}><strong>Features:</strong> {modelSummary.featuresUsed.join(", ")}</p>
 
         <p className={styles.modelText}>
           <strong>Evaluation:</strong> MAE {modelSummary.meanAbsoluteError}, band
@@ -107,9 +88,7 @@ export default function EventsClient({
           {modelSummary.trainSize}/{modelSummary.testSize})
         </p>
 
-        <p className={styles.modelText}>
-          <strong>Data:</strong> {modelSummary.generatedDataDescription}
-        </p>
+        <p className={styles.modelText}><strong>Data:</strong> {modelSummary.generatedDataDescription}</p>
       </section>
 
       <div className={styles.resultsCount} aria-live="polite">
@@ -144,17 +123,11 @@ export default function EventsClient({
                   })}
                 </p>
 
-                <p>
-                  <strong>Time:</strong> {event.time}
-                </p>
+                <p><strong>Time:</strong> {event.time}</p>
 
-                <p>
-                  <strong>Location:</strong> {event.location}
-                </p>
+                <p><strong>Location:</strong> {event.location}</p>
 
-                <p>
-                  <strong>Hosted by:</strong> {event.society}
-                </p>
+                <p><strong>Hosted by:</strong> {event.society}</p>
               </div>
 
               <div className={styles.tags}>
@@ -172,9 +145,7 @@ export default function EventsClient({
                 )}
               </div>
 
-              <Link href={`/events/${event.slug}`} className={styles.cardButton}>
-                View Details
-              </Link>
+              <Link href={`/events/${event.slug}`} className={styles.cardButton} aria-label="View Details">View Details</Link>
             </article>
           ))}
         </section>
