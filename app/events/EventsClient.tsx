@@ -59,13 +59,13 @@ export default function EventsClient({
           <label htmlFor="event-search" className={styles.label}>Search events</label>
 
           <input id="event-search" type="text" placeholder="Search by title, location, or society" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}
-            className={styles.input} aria-label="Filter Events"/>
+            className={styles.input}/>
         </div>
 
         <div className={styles.fieldGroup}>
           <label htmlFor="event-category" className={styles.label}>Category</label>
 
-          <select id="event-category" value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)} className={styles.select}>
+          <select id="event-category" value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)} className={styles.select}aria-label="Filter Events">
             {categories.map((category) => (
               <option key={category} value={category}>
                 {category}
