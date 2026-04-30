@@ -106,7 +106,7 @@ export default async function EventDetailsPage({ params }: PageProps) {
 
           <div className={styles.buttonRow}><EventActions eventId={event.id} primaryClass={styles.primaryButton} secondaryClass={styles.secondaryButton}/></div>
 
-          <Link href="/events" className={styles.backLink}>← Back to Events</Link>
+          <Link href="/events" className={styles.backLink} aria-label="Return To Events">← Back to Events</Link>
         </section>
       </div>
     </main>
