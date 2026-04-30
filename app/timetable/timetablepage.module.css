@@ -1,0 +1,497 @@
+.timetablePageLayout,
+.timetablePageLayout *,
+.timetablePageLayout *::before,
+.timetablePageLayout *::after {
+    box-sizing: border-box;
+}
+
+.timetablePageLayout {
+    --content-max: 1080px;
+    --page-x: clamp(6px, 2vw, 40px);
+    --content-width: min(var(--content-max), calc(100vw - (var(--page-x) * 2)));
+
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+
+    overflow-x: hidden;
+    padding: clamp(90px, 10vh, 150px) var(--page-x) clamp(32px, 6vw, 80px);
+}
+
+.timetableHero,
+.timetableContentColumn {
+    width: var(--content-width);
+    max-width: 100%;
+    margin-left: clamp(37px, calc(2vw + 25px), 60px);
+    margin-right: auto;
+}
+
+.timetableHero {
+    position: relative;
+    margin-top: 0;
+    margin-bottom: clamp(28px, 4vw, 44px);
+    z-index: 3;
+}
+
+.timetableContentColumn {
+    padding: 0;
+}
+
+.eyebrow {
+    margin: 0 0 10px 4px;
+    color: rgba(10, 92, 126, 0.92);
+    font-size: clamp(0.8rem, 1.2vw, 1.125rem);
+
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.timetableHeroContent h1 {
+    margin: 0;
+    max-width: 12ch;
+    color: rgb(17, 42, 58);
+
+    font-family: "Poppins", "Montserrat", sans-serif;
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    font-weight: 800;
+
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+
+    overflow-wrap: anywhere;
+}
+
+.timetableHeroContent p {
+    margin: 18px 0 0;
+    max-width: 760px;
+    color: rgba(34, 58, 70, 0.86);
+
+    font-size: clamp(1rem, 1.3vw, 1.1rem);
+    line-height: 1.7;
+    font-weight: 500;
+
+    overflow-wrap: anywhere;
+}
+
+.timetableSummaryCard {
+    position: fixed;
+    top: clamp(430px, 42vh, 484px);
+    right: clamp(12px, 2vw, 30px);
+
+    width: clamp(220px, 18vw, 260px);
+    min-height: 220px;
+    padding: clamp(14px, 1.4vw, 18px);
+
+    background: linear-gradient(90deg, rgba(211, 80, 126, 0.7) 0%, rgba(229, 120, 158, 0.6) 50%, rgba(246, 170, 195, 0.6) 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 14% 100%, 0 76%);
+    z-index: 10;
+
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.timetableSummaryContent {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+    gap: 14px;
+    color: white;
+}
+
+.timetableSummaryContent h2 {
+    margin: 0;
+    font-family: "Poppins", "Montserrat", sans-serif;
+    font-size: clamp(1.35rem, 2vw, 1.6rem);
+
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+
+    overflow-wrap: anywhere;
+}
+
+.summaryStat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+
+    border-radius: 8px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 8% 100%, 0 70%);
+}
+
+.summaryLabel {
+    font-size: 0.82rem;
+    font-weight: 700;
+    opacity: 0.9;
+
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.summaryValue {
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.timetablePanel {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(16px, 2vw, 18px);
+
+    width: 100%;
+    padding: clamp(16px, 2.5vw, 24px);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.93), rgba(217, 230, 235, 0.88));
+
+    border-bottom: 2px solid rgba(188, 105, 132, 0.55);
+    border-left: 2px solid rgba(188, 105, 132, 0.55);
+    border-top: 2px solid rgba(120, 200, 230, 0.4);
+
+    border-right: 2px solid rgba(120, 200, 230, 0.4);
+    border-radius: 10px;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 96% 100%, 0 100%);
+
+    overflow: hidden;
+}
+
+.timetableHeading {
+    margin: 0;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 800;
+
+    color: rgb(17, 42, 58);
+    font-family: "Poppins", "Montserrat", sans-serif;
+    overflow-wrap: anywhere;
+}
+
+.timetableSubheading {
+    margin: 0;
+    color: rgb(17, 42, 58);
+    font-size: clamp(0.95rem, 1.1vw, 1rem);
+
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+}
+
+.dayTabs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 12px;
+}
+
+.dayButton {
+    width: 100%;
+    min-width: 0;
+    min-height: clamp(48px, 5vw, 54px);
+
+    padding: 0 clamp(14px, 1.6vw, 18px);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    outline: none;
+
+    cursor: pointer;
+    text-align: center;
+    background: linear-gradient(90deg, rgba(178, 62, 103, 0.95) 0%, rgba(184, 101, 130, 0.98) 50%, rgba(210, 123, 152, 0.8) 100%);
+
+    color: rgba(255, 255, 255, 0.98);
+    font-size: clamp(0.85rem, 1.3vw, 0.95rem);
+    font-weight: 700;
+
+    line-height: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 82%, 92% 100%, 0 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 -1px 0 rgba(70, 20, 40, 0.18), 0 8px 20px rgba(70, 20, 40, 0.22);
+
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.18);
+    transition: transform 0.16s ease, filter 0.16s ease, box-shadow 0.16s ease, background 0.16s ease, opacity 0.16s ease;
+}
+
+.dayButton:hover {
+    opacity: 0.9;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), inset 0 -1px 0 rgba(70, 20, 40, 0.16), 0 10px 24px rgba(70, 20, 40, 0.28);
+    transform: translateY(-1px);
+    filter: saturate(1.03);
+}
+
+.dayButton:active {
+    opacity: 1;
+    transform: translateY(1px);
+    box-shadow: inset 0 2px 4px rgba(40, 8, 22, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 4px 12px rgba(70, 20, 40, 0.18);
+}
+
+.dayButton:focus-visible {
+    outline: 3px solid rgba(255, 255, 255, 0.96);
+    outline-offset: 3px;
+}
+
+.activeDayButton {
+    background: linear-gradient(35deg, rgba(19, 114, 145, 0.9), rgba(139, 202, 223, 0.72));
+}
+
+.tableCard {
+    width: 100%;
+    padding: clamp(12px, 2vw, 16px);
+    background: linear-gradient(35deg, rgba(30, 149, 188, 0.9), rgba(162, 220, 239, 0.8));
+
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 4% 100%, 0 87%);
+    overflow: hidden;
+}
+
+.tableWrapper {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 8px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table {
+    width: 100%;
+    min-width: 760px;
+    border-collapse: collapse;
+
+    background: rgba(255, 255, 255, 0.96);
+    color: #17333d;
+    border-radius: 8px;
+
+    overflow: hidden;
+}
+
+.table thead {
+    background: rgba(254, 237, 243, 0.5);
+}
+
+.table th,
+.table td {
+    text-align: left;
+    padding: clamp(12px, 1.3vw, 16px) clamp(10px, 1.1vw, 14px);
+    border-bottom: 1px solid rgba(106, 149, 164, 0.18);
+    vertical-align: top;
+}
+
+.table th {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #18485a;
+}
+
+.table tbody tr:nth-child(even) {
+    background: rgba(241, 248, 250, 0.9);
+}
+
+.table tbody tr:hover {
+    background: rgba(230, 242, 246, 0.95);
+}
+
+.moduleName {
+    margin: 0 0 4px;
+    font-size: 1rem;
+    font-weight: 800;
+    color: #183845;
+}
+
+.moduleCode {
+    color: #6c7f86;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.timeCell {
+    font-weight: 700;
+    color: #18485a;
+    white-space: nowrap;
+}
+
+.modeBadge,
+.weekBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 82px;
+    padding: 8px 10px;
+    border-radius: 999px;
+
+    font-size: 0.82rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.modeBadge {
+    background: rgba(10, 92, 126, 0.1);
+    color: #0d667f;
+}
+
+.weekBadge {
+    background: rgba(188, 105, 132, 0.12);
+    color: #924760;
+}
+
+.messageCard,
+.errorCard {
+    width: 100%;
+    padding: 18px 20px;
+    border-radius: 8px;
+
+    color: rgb(183, 65, 65);
+    font-size: 1rem;
+    line-height: 1.5;
+
+    overflow-wrap: anywhere;
+    font-weight: bold;
+}
+
+.messageCard {
+    background: rgb(255, 255, 255, 0.7);
+    border: 1.5px solid rgba(131, 131, 131, 0.15);
+}
+
+.errorCard {
+    background: rgba(120, 20, 40, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.infoStrip {
+    margin-top: clamp(20px, 3vw, 26px);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+    gap: 14px;
+}
+
+.infoCard {
+    width: 100%;
+    min-height: 110px;
+    padding: 14px;
+
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.93), rgba(238, 247, 250, 0.88));
+    border-radius: 10px;
+    color: rgb(17, 42, 58);
+
+    clip-path: polygon(0 0, 100% 0, 100% 84%, 90% 100%, 0 100%);
+    border: 2px solid rgba(120, 200, 230, 0.4);
+}
+
+.infoCard h3 {
+    margin: 0 0 8px;
+    font-size: 1rem;
+}
+
+.infoCard p {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.visuallyHidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+@media (max-width: 1200px) {
+    .timetablePageLayout {
+        --page-x: clamp(16px, 4vw, 48px);
+        --content-width: min(1050px, calc(100vw - (var(--page-x) * 2)));
+    }
+
+    .timetableSummaryCard {
+        position: relative;
+        top: auto;
+        right: auto;
+
+        width: min(100%, 420px);
+        margin: 0 0 24px;
+    }
+}
+
+@media (max-width: 820px) {
+    .timetablePageLayout {
+        padding-top: clamp(76px, 12vh, 100px);
+        padding-bottom: 24px;
+    }
+
+    .timetableHero,
+    .timetableContentColumn {
+        width: calc(100vw - 24px);
+        margin-left: 12px;
+        margin-right: 12px;
+    }
+
+    .timetableHero {
+        margin-bottom: 22px;
+    }
+
+    .timetableHeroContent h1 {
+        font-size: clamp(2rem, 11vw, 2.8rem);
+        line-height: 0.98;
+    }
+
+    .timetableHeroContent p {
+        font-size: 1rem;
+        line-height: 1.55;
+    }
+
+    .timetablePanel,
+    .tableCard {
+        padding: 14px;
+        clip-path: none;
+        border-radius: 10px;
+    }
+
+    .timetableSummaryCard {
+        clip-path: none;
+        border-radius: 10px;
+    }
+
+    .summaryStat,
+    .infoCard {
+        clip-path: none;
+    }
+
+    .dayTabs {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .dayButton {
+        min-height: 48px;
+        padding: 14px 12px;
+    }
+
+    .table {
+        min-width: 640px;
+    }
+
+    .table th,
+    .table td {
+        padding: 12px 10px;
+    }
+}
+
+@media (max-width: 420px) {
+    .timetableHero,
+    .timetableContentColumn {
+        width: calc(100vw - 20px);
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .dayTabs {
+        grid-template-columns: 1fr;
+    }
+
+    .table {
+        min-width: 560px;
+    }
+}
