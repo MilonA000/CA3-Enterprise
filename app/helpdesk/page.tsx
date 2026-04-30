@@ -171,7 +171,7 @@ export default function HelpDeskPage() {
               <textarea id="issue" name="issue" value={formData.issue} onChange={handleChange} required rows={6} placeholder="Describe your issue here..."/>
             </div>
 
-            <button type="submit" className={styles.submitButton} disabled={loading}>{loading ? "Submitting..." : "Submit Ticket"}</button>
+            <button type="submit" className={styles.submitButton} disabled={loading} aria-label="Submit Ticket">{loading ? "Submitting..." : "Submit Ticket"}</button>
 
           </form>
         
