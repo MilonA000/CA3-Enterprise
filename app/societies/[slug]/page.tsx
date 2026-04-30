@@ -179,15 +179,15 @@ export default async function SocietyDetailPage({
             <div className={styles.buttonRow}>
               <form action={saveSocietyAction}>
                 
-                <button className={styles.primaryButton} type="submit" disabled={alreadySaved}>{alreadySaved ? "Saved ✓" : "Save society"}</button>
+                <button className={styles.primaryButton} type="submit" disabled={alreadySaved} aria-label="Save Society">{alreadySaved ? "Saved ✓" : "Save society"}</button>
 
               </form>
 
-              <Link href={`/events?society=${society.slug}`} className={styles.secondaryButton}>View upcoming events</Link>
+              <Link href={`/events?society=${society.slug}`} className={styles.secondaryButton} aria-label="View Upcoming Events">View upcoming events</Link>
 
             </div>
 
-            <Link href="/societies" className={styles.backLink}>← Back to Societies</Link>
+            <Link href="/societies" className={styles.backLink} aria-label="Back to Societies">← Back to Societies</Link>
 
           </article>
         </section>
