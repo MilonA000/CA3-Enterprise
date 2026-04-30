@@ -13,6 +13,8 @@ const jakarta = Plus_Jakarta_Sans({
   weight: ["400", "500", "600", "700", "800"],
 })
 
+
+
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("")
   const router = useRouter()
@@ -20,7 +22,7 @@ export default function Home() {
   const handleSearch = () => {
     if (!searchQuery.trim()) return
     router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`)
-  }
+    }
 
   return (
     <>
@@ -30,12 +32,14 @@ export default function Home() {
 
           <Background />
 
+          <QuickLinks />
+
           <div className={styles.PopoutShell}>            
             
             <div className={styles.Popout1}>
               <div className={styles.Popout1Content}>
                 <h2>Campus Life Companion</h2>
-                
+
                 <p>Find campus services, events, societies and support in one place.</p>
               </div>
             </div>
@@ -45,7 +49,7 @@ export default function Home() {
 
               <div className={styles.searchContainer2}>
                 <input id="search2" type="text" placeholder="Find something on campus..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} onKeyDown={(e) => {
-                    if (e.key === "Enter") handleSearch()}}/>
+                    if (e.key === "Enter") handleSearch()}} aria-label="Enter Search Input"/>
 
                 <button type="button" onClick={handleSearch} area-label="Search Application">Search</button>
               </div>
@@ -54,8 +58,6 @@ export default function Home() {
             </div>
 
           </div>
-
-          <QuickLinks />
 
         </main>
     </>
