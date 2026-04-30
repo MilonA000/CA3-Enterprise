@@ -135,7 +135,7 @@ export default function Society() {
               <label htmlFor="society-category" className={styles.label}>Category</label>
 
               <select id="society-category" value={category} onChange={(e) => setCategory(e.target.value as SocietyCategory | "All")}
-                className={styles.select}>{categories.map((item) => (
+                className={styles.select} aria-label="Filter Societies">{categories.map((item) => (
                   
                   <option key={item} value={item}>{item}</option>))}
               
@@ -217,7 +217,7 @@ export default function Society() {
                   
                   </div>
 
-                  <Link href={`/societies/${society.slug}`} className={styles.cardButton}>View Details</Link>
+                  <Link href={`/societies/${society.slug}`} className={styles.cardButton} aria-label="View Details">View Details</Link>
                 
                 </article>
               
