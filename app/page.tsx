@@ -39,6 +39,7 @@ export default function Home() {
             <div className={styles.Popout1}>
               <div className={styles.Popout1Content}>
                 <h2>Campus Life Companion</h2>
+                
                 <p>Find campus services, events, societies and support in one place.</p>
               </div>
             </div>
@@ -50,7 +51,7 @@ export default function Home() {
                 <input id="search2" type="text" placeholder="Find something on campus..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} onKeyDown={(e) => {
                     if (e.key === "Enter") handleSearch()}}/>
 
-                <button type="button" onClick={handleSearch}>Search</button>
+                <button type="button" onClick={handleSearch} area-label="Search Application">Search</button>
               </div>
 
               <p className={styles.SearchContainerP}>Search Events, Societies, Campus Locations and Services.</p>
