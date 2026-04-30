@@ -159,6 +159,7 @@
     align-items: center;
     cursor: pointer;
     gap: 12px;
+
 }
 
 .toggleRow input[type="checkbox"] {
@@ -194,13 +195,19 @@
 
     border-radius: 8px;
     background-image: linear-gradient(135deg, rgba(189, 31, 86, 0.7), rgba(215, 92, 135, 0.6), rgba(246, 170, 195, 0.5));
-    color: rgba(102, 102, 102, 0.575);
+    color: rgb(255, 255, 255);
 
     font-size: clamp(1rem, 1.1vw, 1.1rem);
     font-weight: 700;
     cursor: pointer;
 
     appearance: none;
+    outline: none !important;
+}
+
+.selectInput option {
+  color: rgb(31, 41, 55);
+  background-color: white;
 }
 
 .buttonRow {
