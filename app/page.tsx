@@ -13,8 +13,6 @@ const jakarta = Plus_Jakarta_Sans({
   weight: ["400", "500", "600", "700", "800"],
 })
 
-
-
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("")
   const router = useRouter()
@@ -22,7 +20,7 @@ export default function Home() {
   const handleSearch = () => {
     if (!searchQuery.trim()) return
     router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`)
-    }
+  }
 
   return (
     <>
@@ -31,8 +29,6 @@ export default function Home() {
           <Navbar />
 
           <Background />
-
-          <QuickLinks />
 
           <div className={styles.PopoutShell}>            
             
@@ -58,6 +54,8 @@ export default function Home() {
             </div>
 
           </div>
+
+          <QuickLinks />
 
         </main>
     </>
