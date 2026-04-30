@@ -235,7 +235,7 @@ export function buildAttendancePredictions(events: EventItem[]): {
         "Category score",
       ],
       generatedDataDescription:
-        "For each real event from the database, 12 fictional past weekly attendance records were generated using a deterministic formula (time, weekday/weekend, featured, food, category), plus small deterministic noise and seasonality.",
+        "For each event from the database, 12 fictional past weekly attendance records were generated using a deterministic formula (time, weekday/weekend, featured, food, category), plus small deterministic noise and seasonality.",
       modelChoiceExplanation:
         "A small linear regression model was used because it is lightweight, fast to train, and easy to explain: each feature contributes additively to the attendance estimate.",
       trainSize: trainRows.length,
