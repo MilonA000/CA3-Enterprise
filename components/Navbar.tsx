@@ -69,15 +69,15 @@ export default function Navbar() {
 
       <div className={styles.navbarButton}>
 
-        <Link href="/" className={styles.navHomeBtn}>Home</Link>
+        <Link href="/" className={styles.navHomeBtn} area-label="Return Home">Home</Link>
 
-        <Link href="/helpdesk" className={styles.navEventsBtn}>Help</Link>
+        <Link href="/helpdesk" className={styles.navEventsBtn} aria-label="Help Desk">Help</Link>
 
         {isLoggedIn ? (
           
           <>
 
-            <Link href="/settings" className={styles.navSignInBtn}>{userName}<Image src="/user-icon.png"
+            <Link href="/settings" className={styles.navSignInBtn} aria-label="Account">{userName}<Image src="/user-icon.png"
                 alt="User icon"
                 width={24}
                 height={24}/>
@@ -87,7 +87,7 @@ export default function Navbar() {
 
         ) : (
 
-          <Link href="/login" className={styles.navSignInBtn}>Sign In<Image
+          <Link href="/login" className={styles.navSignInBtn} aria-label="Sign In">Sign In<Image
               src="/logo.png"
               alt="Sign in logo"
               width={24}
@@ -102,30 +102,30 @@ export default function Navbar() {
 
         <button className={styles.closeBtn} onClick={() => setMenuOpen(false)} aria-label="Close menu" type="button">✖</button>
 
-        <Link href="/" className={`${styles.sideMenuLink} ${styles.homeButton}`} onClick={() => setMenuOpen(false)}>Home</Link>
+        <Link href="/" className={`${styles.sideMenuLink} ${styles.homeButton}`} onClick={() => setMenuOpen(false)} aria-label="Return Home">Home</Link>
 
-        <Link href="/timetable" className={styles.sideMenuLink} onClick={() => setMenuOpen(false)}>Timetables</Link>
+        <Link href="/timetable" className={styles.sideMenuLink} onClick={() => setMenuOpen(false)} aria-label="Timetables">Timetables</Link>
 
-        <Link href="/helpdesk" className={styles.sideMenuLink} onClick={() => setMenuOpen(false)}>Help</Link>
+        <Link href="/helpdesk" className={styles.sideMenuLink} onClick={() => setMenuOpen(false)} aria-label="Help Desk">Help</Link>
 
         {isLoggedIn ? (
           
           <>
 
-          <Link href="/settings" className={styles.sideMenuLink} onClick={() => setMenuOpen(false)}>
+          <Link href="/settings" className={styles.sideMenuLink} onClick={() => setMenuOpen(false)} aria-label="Settings">
 
-              {userName}<Image className={styles.signInImage2} src="/user-icon.png" alt="User icon" width={24} height={24}/>
+              {userName}<Image className={styles.signInImage2} src="/user-icon.png" alt="User icon" width={24} height={24}/> 
           </Link>
 
-          <Link href="/saved" className={styles.sideMenuLink} onClick={() => setMenuOpen(false)}>Saved Events</Link>
+          <Link href="/saved" className={styles.sideMenuLink} onClick={() => setMenuOpen(false)} aria-label="Saved Events">Saved Events</Link>
 
-          <Link href="/saved-societies" className={styles.sideMenuLink} onClick={() => setMenuOpen(false)}>Saved Societies</Link>
+          <Link href="/saved-societies" className={styles.sideMenuLink} onClick={() => setMenuOpen(false)} aria-label="Saved Societies">Saved Societies</Link>
 
           </>
         
         ) : (
 
-          <Link href="/login" className={styles.sideMenuLink} onClick={() => setMenuOpen(false)}>Sign In<Image className={styles.signInImage2}
+          <Link href="/login" className={styles.sideMenuLink} onClick={() => setMenuOpen(false)} aria-label="Sign In">Sign In<Image className={styles.signInImage2}
               src="/logo.png"
               alt="Sign in logo"
               width={24}
@@ -134,7 +134,7 @@ export default function Navbar() {
 
         )}
 
-        <Link href="/settings" className={styles.sideMenuLinkSettings} onClick={() => setMenuOpen(false)}>Settings<Image className={styles.settingsImage}
+        <Link href="/settings" className={styles.sideMenuLinkSettings} onClick={() => setMenuOpen(false)} aria-label="Settings">Settings<Image className={styles.settingsImage}
             src="/settings-logo.png"
             alt="Settings logo"
             width={30}
