@@ -83,14 +83,17 @@
         width: 100%;
         min-height: unset;
         clip-path: none;
-        padding: 20px 16px;
+        padding: 20px 16px 40px;
         z-index: 1;
+        margin-top: 24px;
+        overflow: visible;
     }
     .QuickLinksContent {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
         gap: 12px;
+        overflow: visible;
     }
     .QuickLinksContent h3 {
         width: 100%;
