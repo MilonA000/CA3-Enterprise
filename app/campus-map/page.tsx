@@ -94,7 +94,7 @@ export default function CampusMapPage() {
                       {filters.map((filter) => (
 
                         <button key={filter} type="button" onClick={() => setActiveFilter(filter)} className={`${styles.filterButton} ${activeFilter === 
-                          filter ? styles.activeFilter : ""}`}>{filter}</button>
+                          filter ? styles.activeFilter : ""}`} aria-label="Filter Button">{filter}</button>
 
                       ))}
                     </div>
@@ -161,13 +161,13 @@ export default function CampusMapPage() {
                     )}
 
                     <div className={styles.quickLinks}>
-                      <button type="button" className={styles.quickLinkButton} onClick={() => setActiveFilter("Food")}>Find Food</button>
+                      <button type="button" className={styles.quickLinkButton} onClick={() => setActiveFilter("Food")} aria-label="Find Food">Find Food</button>
 
-                      <button type="button" className={styles.quickLinkButton} onClick={() => setActiveFilter("Study")}>Find Study Spaces</button>
+                      <button type="button" className={styles.quickLinkButton} onClick={() => setActiveFilter("Study")} aria-label="Find Study Spaces">Find Study Spaces</button>
 
-                      <button type="button" className={styles.quickLinkButton} onClick={() => setActiveFilter("Support")}>Find Support</button>
+                      <button type="button" className={styles.quickLinkButton} onClick={() => setActiveFilter("Support")} aria-label="Find Support">Find Support</button>
 
-                      <button type="button" className={styles.quickLinkButton} onClick={() => setActiveFilter("Accessibility")}>Accessible Locations</button>
+                      <button type="button" className={styles.quickLinkButton} onClick={() => setActiveFilter("Accessibility")} aria-label="Accessible Locations">Accessible Locations</button>
                     </div>
                   </div>
                 </aside>
@@ -175,7 +175,7 @@ export default function CampusMapPage() {
                 <section className={styles.directoryStrip}>
                   {filteredLocations.slice(0, 4).map((location) => (
                     
-                    <button key={location.id} type="button" onClick={() => setSelectedId(location.id)} className={styles.directoryCard}>
+                    <button key={location.id} type="button" onClick={() => setSelectedId(location.id)} className={styles.directoryCard} aria-label="Directory">
                       <h3>{location.code} · {location.name}</h3><p>{location.category}</p>
                     </button>
 
