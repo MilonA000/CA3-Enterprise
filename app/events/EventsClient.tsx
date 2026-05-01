@@ -65,7 +65,7 @@ export default function EventsClient({
         <div className={styles.fieldGroup}>
           <label htmlFor="event-category" className={styles.label}>Category</label>
 
-          <select id="event-category" value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)} className={styles.select}aria-label="Filter Events">
+          <select id="event-category" value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)} className={styles.select} aria-label="Filter Events">
             {categories.map((category) => (
               <option key={category} value={category}>
                 {category}
@@ -75,7 +75,7 @@ export default function EventsClient({
         </div>
       </section>
 
-      <section className={styles.modelCard} aria-label="Attendance model summary">
+      {/* <section className={styles.modelCard} aria-label="Attendance model summary">
         <p className={styles.modelTitle}>Expected attendance model</p>
 
         <p className={styles.modelText}>{modelSummary.modelChoiceExplanation}</p>
@@ -89,7 +89,7 @@ export default function EventsClient({
         </p>
 
         <p className={styles.modelText}><strong>Data:</strong> {modelSummary.generatedDataDescription}</p>
-      </section>
+      </section> */}
 
       <div className={styles.resultsCount} aria-live="polite">
         Showing {filteredEvents.length}{" "}
