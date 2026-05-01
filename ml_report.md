@@ -1,6 +1,6 @@
 # Machine Learning Report
 The machine learning is a small linear regression model set to predict the expected attendance for given events. For each event in the database, 12 fictional past weekly attendance records were generated using a deterministic formula (time, weekday/weekend, featured, food, category), small linear regression model was used because it is lightweight, fast to train, plus small deterministic noise and seasonality. With MAE 13.53, band accuracy 60% (train/test 57/15).
-The machine learning section is in the events page, there is a brief description of the machine leaning at the top of the events page, with the description, features, evaluation and the data description for the events. 
+The machine learning section is in the events page, there is a brief description of the machine leaning at the top of the events page, with the description, features, evaluation and the data description for the events. Description box was "commented out" in the code as we are unsure whether to have it displayed on the actual page or not, however, code for it is still there.
 
 ## The following prompt was added cursor copilot:
 
