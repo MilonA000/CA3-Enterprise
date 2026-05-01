@@ -174,9 +174,9 @@ export default function SavedEventsPage() {
               </div>
 
               <div className={styles.actions}>
-                <Link href={`/events/${event.slug}`} className={styles.cardButton}>View Event</Link>
+                <Link href={`/events/${event.slug}`} className={styles.cardButton} aria-label="View Event">View Event</Link>
 
-                <button type="button" onClick={() => handleRemove(event.id)} className={styles.secondaryButton}>Remove</button>
+                <button type="button" onClick={() => handleRemove(event.id)} className={styles.secondaryButton} aria-label="Remove Event From Saved List">Remove</button>
               
               </div>
             </article>
