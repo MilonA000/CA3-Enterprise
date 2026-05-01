@@ -176,13 +176,13 @@ export default async function SavedSocietiesPage() {
 
                 <div className={styles.buttonRow}>
 
-                  <Link href={`/societies/${society.slug}`} className={styles.cardButton}>View Details</Link>
+                  <Link href={`/societies/${society.slug}`} className={styles.cardButton} aria-label="View Details">View Details</Link>
 
                   <form action={removeSavedSociety}>
 
                     <input type="hidden" name="societyId" value={society.id} />
                     
-                    <button type="submit" className={styles.removeButton}>Remove</button>
+                    <button type="submit" className={styles.removeButton} aria-label="Remove from Saved List">Remove</button>
 
                   </form>
                 
